@@ -1,0 +1,181 @@
+{
+  "description": "Pre-scaled integer biases for V5-Spatial (ComponentCNNSpatial) FPGA implementation",
+  "source_checkpoint": "v5_spatial_best_model.pth",
+  "checkpoint_epoch": 49,
+  "formula": "bias_int = round(bias_fp32 / bias_scale), where bias_scale = input_activation_scale * weight_scale",
+  "rounding_rule": "round-to-nearest-even (IEEE 754 / NumPy np.round)",
+  "default_dtype": "int32",
+  "calibration_note": "Activation scales were determined via training-set calibration in evaluate_v5_quantization.py. If activation scaling or calibration strategy is modified, these integer biases must be regenerated.",
+  "layers": {
+    "conv1": {
+      "display_name": "Conv Block 1",
+      "param_weight_key": "features.0.weight",
+      "param_bias_key": "features.0.bias",
+      "shape": [
+        16
+      ],
+      "elements": 16,
+      "dtype": "int32",
+      "npy_file": "conv1_bias_int32.npy",
+      "txt_file": "conv1_bias_int32.txt",
+      "input_activation_scale": {
+        "key": "input",
+        "value": 0.00787402,
+        "description": "Normalized RGB input image"
+      },
+      "weight_scale": {
+        "max_abs_weight": 0.421193391084671,
+        "value": 0.003316483394367488
+      },
+      "bias_scale": 2.6114056576917492e-05,
+      "int32_range": {
+        "min": -5964,
+        "max": 19140,
+        "max_absolute": 19140
+      },
+      "fits_int16": true,
+      "fits_int8": false,
+      "quantization_error": {
+        "max_abs_error": 1.2703441487238454e-05,
+        "mean_abs_error": 6.084346679826073e-06
+      },
+      "round_half_up_discrepancies": 0
+    },
+    "conv2": {
+      "display_name": "Conv Block 2",
+      "param_weight_key": "features.3.weight",
+      "param_bias_key": "features.3.bias",
+      "shape": [
+        32
+      ],
+      "elements": 32,
+      "dtype": "int32",
+      "npy_file": "conv2_bias_int32.npy",
+      "txt_file": "conv2_bias_int32.txt",
+      "input_activation_scale": {
+        "key": "after_pool1",
+        "value": 0.0271169,
+        "description": "Post-Pool1 activation (identical to post-Conv1+ReLU scale)"
+      },
+      "weight_scale": {
+        "max_abs_weight": 0.6875061988830566,
+        "value": 0.005413434636874462
+      },
+      "bias_scale": 0.0001467955657046611,
+      "int32_range": {
+        "min": -779,
+        "max": 1309,
+        "max_absolute": 1309
+      },
+      "fits_int16": true,
+      "fits_int8": false,
+      "quantization_error": {
+        "max_abs_error": 6.392826964911336e-05,
+        "mean_abs_error": 3.189757146596726e-05
+      },
+      "round_half_up_discrepancies": 0
+    },
+    "conv3": {
+      "display_name": "Conv Block 3",
+      "param_weight_key": "features.6.weight",
+      "param_bias_key": "features.6.bias",
+      "shape": [
+        64
+      ],
+      "elements": 64,
+      "dtype": "int32",
+      "npy_file": "conv3_bias_int32.npy",
+      "txt_file": "conv3_bias_int32.txt",
+      "input_activation_scale": {
+        "key": "after_pool2",
+        "value": 0.14521016,
+        "description": "Post-Pool2 activation (identical to post-Conv2+ReLU scale)"
+      },
+      "weight_scale": {
+        "max_abs_weight": 0.5914120674133301,
+        "value": 0.004656787932388426
+      },
+      "bias_scale": 0.0006762129207481926,
+      "int32_range": {
+        "min": -220,
+        "max": 338,
+        "max_absolute": 338
+      },
+      "fits_int16": true,
+      "fits_int8": false,
+      "quantization_error": {
+        "max_abs_error": 0.0003378290942330636,
+        "mean_abs_error": 0.00018784514610049982
+      },
+      "round_half_up_discrepancies": 0
+    },
+    "fc1": {
+      "display_name": "FC Hidden (FC1)",
+      "param_weight_key": "classifier.0.weight",
+      "param_bias_key": "classifier.0.bias",
+      "shape": [
+        64
+      ],
+      "elements": 64,
+      "dtype": "int32",
+      "npy_file": "fc1_bias_int32.npy",
+      "txt_file": "fc1_bias_int32.txt",
+      "input_activation_scale": {
+        "key": "after_spatial_pool",
+        "value": 0.32026483,
+        "description": "Post-AdaptiveAvgPool2d(2,2) flattened activation"
+      },
+      "weight_scale": {
+        "max_abs_weight": 0.471858948469162,
+        "value": 0.0037154247910957637
+      },
+      "bias_scale": 0.0011899198890980703,
+      "int32_range": {
+        "min": -86,
+        "max": 125,
+        "max_absolute": 125
+      },
+      "fits_int16": true,
+      "fits_int8": true,
+      "quantization_error": {
+        "max_abs_error": 0.0005909951772979927,
+        "mean_abs_error": 0.00031165199464495367
+      },
+      "round_half_up_discrepancies": 0
+    },
+    "fc2": {
+      "display_name": "FC Output (FC2)",
+      "param_weight_key": "classifier.2.weight",
+      "param_bias_key": "classifier.2.bias",
+      "shape": [
+        10
+      ],
+      "elements": 10,
+      "dtype": "int32",
+      "npy_file": "fc2_bias_int32.npy",
+      "txt_file": "fc2_bias_int32.txt",
+      "input_activation_scale": {
+        "key": "after_fc1_relu",
+        "value": 0.21360116,
+        "description": "Post-FC1+ReLU activation"
+      },
+      "weight_scale": {
+        "max_abs_weight": 0.6489287614822388,
+        "value": 0.005109675287261722
+      },
+      "bias_scale": 0.0010914325685824372,
+      "int32_range": {
+        "min": -190,
+        "max": 76,
+        "max_absolute": 190
+      },
+      "fits_int16": true,
+      "fits_int8": false,
+      "quantization_error": {
+        "max_abs_error": 0.0004911296974804621,
+        "mean_abs_error": 0.00022703808233900496
+      },
+      "round_half_up_discrepancies": 0
+    }
+  }
+}

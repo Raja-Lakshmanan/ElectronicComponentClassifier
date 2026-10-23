@@ -1,0 +1,105 @@
+==================================================================================
+  ComponentCNN (V4) — FPGA Deployment Configuration Specification
+  Hardware Target: PYNQ-Z2 (Zynq-7020 SoC / Xilinx Vivado HLS)
+==================================================================================
+
+1. GENERAL CHECKPOINT INFORMATION
+----------------------------------------------------------------------------------
+  Checkpoint File       : C:\Users\rajal\OneDrive\Desktop\ElectronicComponentClassifier\checkpoints\v4_best_model.pth
+  Model Architecture    : ComponentCNN (model.py)
+  Checkpoint Epoch      : 45
+  Val Accuracy (ckpt)   : 64.91%
+  Val Macro F1 (ckpt)   : 0.5866
+  Verification Status   : PASS (All weights, shapes, and metadata verified)
+
+2. INPUT SPECIFICATION & HARDWARE PREPROCESSING
+----------------------------------------------------------------------------------
+  Input Resolution      : 64 x 64 pixels
+  Input Channels        : 3 (RGB, Planar: Channel-first [C, H, W] = [3, 64, 64])
+  Color Channel Order   : R, G, B
+  Raw Pixel Range       : [0, 255] (unsigned 8-bit integer, uint8)
+  Normalization Mean    : (0.5, 0.5, 0.5)
+  Normalization Std     : (0.5, 0.5, 0.5)
+
+  FPGA Preprocessing Fixed-Point Conversion Formula:
+    Normalized_Float = ((Pixel_uint8 / 255.0) - 0.5) / 0.5
+                     = (2.0 * Pixel_uint8 / 255.0) - 1.0
+    Dynamic Range    : [-1.0, +1.0]
+
+    Hardware Fixed-Point Formulation (Q1.15 or Q8.8):
+      Input_Q15 = round( ((Pixel_uint8 << 16) / 255) - 32768 )
+
+3. OUTPUT CLASS MAPPING & TRANSISTOR MASKING SPECIFICATION
+----------------------------------------------------------------------------------
+  Total Raw Output Classes   : 10 (Indices 0 through 9)
+  Permitted Classes Count    : 9 (Indices 0 through 8)
+  Transistor Output Index    : 9 (MUST BE MASKED)
+
+  Index   Class Name             Deployment Status    Action / Notes
+  ------------------------------------------------------------------------------
+  [0  ] capacitor              PERMITTED            Valid component prediction candidate
+  [1  ] diode                  PERMITTED            Valid component prediction candidate
+  [2  ] fuse                   PERMITTED            Valid component prediction candidate
+  [3  ] inductor               PERMITTED            Valid component prediction candidate
+  [4  ] integrated_circuit     PERMITTED            Valid component prediction candidate
+  [5  ] led                    PERMITTED            Valid component prediction candidate
+  [6  ] potentiometer          PERMITTED            Valid component prediction candidate
+  [7  ] push_button            PERMITTED            Valid component prediction candidate
+  [8  ] resistor               PERMITTED            Valid component prediction candidate
+  [9  ] transistor             MASKED / EXCLUDED    Set logit to -inf; do not allow as output prediction
+  ------------------------------------------------------------------------------
+
+  Required Post-Processing Logic (Firmware / HLS Comparator):
+    In Python / Host Driver:
+      raw_logits = model(input_tensor)               # Shape: [1, 10]
+      raw_logits[:, 9] = -float('inf')               # Mask transistor
+      predicted_idx = raw_logits[:, :9].argmax(dim=1)
+
+    In Vivado HLS C++ Synthesis:
+      // Only search indices 0 to 8 in the argmax reduction tree:
+      int best_class = 0;
+      fixed_t max_logit = logits[0];
+      for (int i = 1; i < 9; i++) { // Loop bounds explicitly exclude index 9
+          if (logits[i] > max_logit) {
+              max_logit = logits[i];
+              best_class = i;
+          }
+      }
+
+4. LAYER-BY-LAYER HARDWARE PIPELINE PROFILE
+----------------------------------------------------------------------------------
+  Block              Operation / Kernel                   Output Shape     Params       MACs
+  ----------------------------------------------------------------------------------------
+  Conv Block 1       Conv2d(3, 16, k=3, p=1) + ReLU + MaxPool2d(2) (1, 16, 32, 32)      448    442,368
+  Conv Block 2       Conv2d(16, 32, k=3, p=1) + ReLU + MaxPool2d(2) (1, 32, 16, 16)    4,640  1,179,648
+  Conv Block 3       Conv2d(32, 64, k=3, p=1) + ReLU + MaxPool2d(2) (1, 64, 8, 8)    18,496  1,179,648
+  Global Pooling     AdaptiveAvgPool2d((1, 1))            (1, 64, 1, 1)         0      4,096
+  Linear Classifier  Linear(in=64, out=10)                (1, 10)             650        640
+  ----------------------------------------------------------------------------------------
+  TOTAL              Pipeline Total                       (1, 10)          24,234  2,806,400
+
+5. HARDWARE RESOURCE & MEMORY FOOTPRINT ESTIMATE
+----------------------------------------------------------------------------------
+  Total Trainable Parameters : 24,234
+  Total Multiply-Accumulates : 2,806,400 MACs per inference frame
+  Weight Memory (FP32)       : 94.66 KB  (Baseline 32-bit float)
+  Weight Memory (INT16 / Q15): 47.33 KB  (16-bit fixed point)
+  Weight Memory (INT8 / Q7)  : 23.67 KB  (8-bit quantized integer)
+
+  PYNQ-Z2 On-Chip BRAM Fit Assessment:
+    - PYNQ-Z2 (Zynq-7020) Block RAM : 4.9 Mb (~612.5 KB)
+    - Entire 24.2K parameter weights require ONLY ~24 to ~48 KB of BRAM.
+    - Fit Verdict: 100% of network weights comfortably fit entirely on-chip.
+    - Zero off-chip DDR bandwidth required for weight streaming!
+
+6. DEPLOYMENT VERIFICATION CHECKLIST
+----------------------------------------------------------------------------------
+  [x] Checkpoint exists and loads cleanly without PyTorch warnings
+  [x] Model architecture matches model.py ComponentCNN exactly
+  [x] Parameter count verified: exactly 24,234 parameters
+  [x] Input resolution verified: 64x64 RGB
+  [x] Normalization verified: mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5)
+  [x] 10 raw output classes mapped and aligned with project index convention
+  [x] Transistor identified at index 9; masking requirement explicitly specified
+  [x] Dummy forward pass verified: (1, 3, 64, 64) -> (1, 10)
+==================================================================================

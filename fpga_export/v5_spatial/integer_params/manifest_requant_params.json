@@ -1,0 +1,244 @@
+{
+  "description": "Fixed-point requantization multipliers and right shifts for V5-Spatial",
+  "source_checkpoint": "v5_spatial_best_model.pth",
+  "checkpoint_epoch": 49,
+  "formula": {
+    "scaling_ratio": "ratio = (input_activation_scale * weight_scale) / output_activation_scale",
+    "fixed_point_approximation": "ratio ~= M / (2**S)",
+    "integer_inference_step": "q_out = clip( ((acc + bias_int32) * M + (1 << (S - 1))) >> S, -128, 127 )"
+  },
+  "bias_integration": "CRITICAL: Integer biases (bias_int32) exported in Step 2.4.1 MUST be added to the accumulator BEFORE requantization, because bias_int32 is scaled by (input_activation_scale * weight_scale).",
+  "rounding_convention": "Hardware round-half-up addition of (1 << (S - 1)) prior to right-shift by S bits. Tested against both IEEE round-even and round-half-up float references.",
+  "fc2_logit_handling": {
+    "status": "Unquantized logits in baseline evaluation",
+    "explanation": "The trained model produces unquantized logits at FC2. In baseline and quantization evaluation, argmax is computed directly over logits. For FPGA hardware classification, because argmax is invariant under scaling by positive constants, the integer accumulator (acc + bias_int32) can be used directly for argmax without any multiplier/shift truncation. Option A (default for classification): ratio = 1.0, M = 1, S = 0 (zero loss). Option B (if explicit fixed-point logits are needed downstream): a dedicated logit scale must be selected based on the desired fixed-point format (e.g. Q8.8); no arbitrary scale was silently invented."
+  },
+  "layers": {
+    "conv1": {
+      "display_name": "Conv Block 1",
+      "has_relu": true,
+      "input_activation_scale": 0.00787402,
+      "weight_scale": 0.003316483394367488,
+      "output_activation_scale": {
+        "key": "after_conv1_relu",
+        "value": 0.0271169,
+        "description": "Post-Conv1+ReLU activation scale from calibration"
+      },
+      "exact_ratio": 0.0009630177703541885,
+      "primary_31bit_format": {
+        "multiplier_M": 2117698473,
+        "multiplier_bits": 31,
+        "shift_S": 41,
+        "approximate_ratio": 0.0009630177705730603,
+        "relative_error": 2.2727700612105094e-10,
+        "accuracy_test": {
+          "max_err_vs_round_even_lsb": 0,
+          "max_err_vs_round_halfup_lsb": 0,
+          "exact_match_pct": 100.0,
+          "intermediate_product_max": 962754432890679,
+          "intermediate_bits_needed": 51,
+          "fits_in_int64": true,
+          "tested_samples": 200000,
+          "tested_acc_range": [
+            -454623,
+            454623
+          ]
+        }
+      },
+      "compact_16bit_format": {
+        "multiplier_M": 64627,
+        "multiplier_bits": 16,
+        "shift_S": 26,
+        "approximate_ratio": 0.0009630173444747925,
+        "relative_error": 4.4223420283126776e-07,
+        "accuracy_test": {
+          "max_err_vs_round_even_lsb": 1,
+          "max_err_vs_round_halfup_lsb": 1,
+          "exact_match_pct": 99.99,
+          "intermediate_product_max": 29380920621,
+          "intermediate_bits_needed": 36,
+          "fits_in_int64": true,
+          "tested_samples": 200000,
+          "tested_acc_range": [
+            -454623,
+            454623
+          ]
+        }
+      }
+    },
+    "conv2": {
+      "display_name": "Conv Block 2",
+      "has_relu": true,
+      "input_activation_scale": 0.0271169,
+      "weight_scale": 0.005413434636874462,
+      "output_activation_scale": {
+        "key": "after_conv2_relu",
+        "value": 0.14521016,
+        "description": "Post-Conv2+ReLU activation scale from calibration"
+      },
+      "exact_ratio": 0.0010109180081108724,
+      "primary_31bit_format": {
+        "multiplier_M": 1111516105,
+        "multiplier_bits": 31,
+        "shift_S": 40,
+        "approximate_ratio": 0.0010109180084327818,
+        "relative_error": 3.1843273168321403e-10,
+        "accuracy_test": {
+          "max_err_vs_round_even_lsb": 0,
+          "max_err_vs_round_halfup_lsb": 0,
+          "exact_match_pct": 100.0,
+          "intermediate_product_max": 2583035603667925,
+          "intermediate_bits_needed": 53,
+          "fits_in_int64": true,
+          "tested_samples": 200000,
+          "tested_acc_range": [
+            -2323885,
+            2323885
+          ]
+        }
+      },
+      "compact_16bit_format": {
+        "multiplier_M": 33921,
+        "multiplier_bits": 16,
+        "shift_S": 25,
+        "approximate_ratio": 0.0010109245777130127,
+        "relative_error": 6.498649828748693e-06,
+        "accuracy_test": {
+          "max_err_vs_round_even_lsb": 1,
+          "max_err_vs_round_halfup_lsb": 1,
+          "exact_match_pct": 99.24,
+          "intermediate_product_max": 78828503085,
+          "intermediate_bits_needed": 38,
+          "fits_in_int64": true,
+          "tested_samples": 200000,
+          "tested_acc_range": [
+            -2323885,
+            2323885
+          ]
+        }
+      }
+    },
+    "conv3": {
+      "display_name": "Conv Block 3",
+      "has_relu": true,
+      "input_activation_scale": 0.14521016,
+      "weight_scale": 0.004656787932388426,
+      "output_activation_scale": {
+        "key": "after_conv3_relu",
+        "value": 0.50742737,
+        "description": "Post-Conv3+ReLU activation scale from calibration"
+      },
+      "exact_ratio": 0.0013326299697791085,
+      "primary_31bit_format": {
+        "multiplier_M": 1465242147,
+        "multiplier_bits": 31,
+        "shift_S": 40,
+        "approximate_ratio": 0.00133262996951089,
+        "relative_error": 2.012699671243836e-10,
+        "accuracy_test": {
+          "max_err_vs_round_even_lsb": 0,
+          "max_err_vs_round_halfup_lsb": 0,
+          "exact_match_pct": 100.0,
+          "intermediate_product_max": 6806767741467030,
+          "intermediate_bits_needed": 54,
+          "fits_in_int64": true,
+          "tested_samples": 200000,
+          "tested_acc_range": [
+            -4645490,
+            4645490
+          ]
+        }
+      },
+      "compact_16bit_format": {
+        "multiplier_M": 44716,
+        "multiplier_bits": 16,
+        "shift_S": 25,
+        "approximate_ratio": 0.0013326406478881836,
+        "relative_error": 8.012808744572738e-06,
+        "accuracy_test": {
+          "max_err_vs_round_even_lsb": 1,
+          "max_err_vs_round_halfup_lsb": 1,
+          "exact_match_pct": 97.52,
+          "intermediate_product_max": 207727730840,
+          "intermediate_bits_needed": 39,
+          "fits_in_int64": true,
+          "tested_samples": 200000,
+          "tested_acc_range": [
+            -4645490,
+            4645490
+          ]
+        }
+      }
+    },
+    "fc1": {
+      "display_name": "FC Hidden (FC1)",
+      "has_relu": true,
+      "input_activation_scale": 0.32026483,
+      "weight_scale": 0.0037154247910957637,
+      "output_activation_scale": {
+        "key": "after_fc1_relu",
+        "value": 0.21360116,
+        "description": "Post-FC1+ReLU activation scale from calibration"
+      },
+      "exact_ratio": 0.005570755744482241,
+      "primary_31bit_format": {
+        "multiplier_M": 1531277679,
+        "multiplier_bits": 31,
+        "shift_S": 38,
+        "approximate_ratio": 0.005570755743974587,
+        "relative_error": 9.112835638528347e-11,
+        "accuracy_test": {
+          "max_err_vs_round_even_lsb": 0,
+          "max_err_vs_round_halfup_lsb": 0,
+          "exact_match_pct": 100.0,
+          "intermediate_product_max": 6322873696965171,
+          "intermediate_bits_needed": 54,
+          "fits_in_int64": true,
+          "tested_samples": 200000,
+          "tested_acc_range": [
+            -4129149,
+            4129149
+          ]
+        }
+      },
+      "compact_16bit_format": {
+        "multiplier_M": 46731,
+        "multiplier_bits": 16,
+        "shift_S": 23,
+        "approximate_ratio": 0.005570769309997559,
+        "relative_error": 2.435130158285371e-06,
+        "accuracy_test": {
+          "max_err_vs_round_even_lsb": 1,
+          "max_err_vs_round_halfup_lsb": 1,
+          "exact_match_pct": 97.2,
+          "intermediate_product_max": 192959261919,
+          "intermediate_bits_needed": 39,
+          "fits_in_int64": true,
+          "tested_samples": 200000,
+          "tested_acc_range": [
+            -4129149,
+            4129149
+          ]
+        }
+      }
+    },
+    "fc2": {
+      "display_name": "FC Output (FC2)",
+      "has_relu": false,
+      "input_activation_scale": 0.21360116,
+      "weight_scale": 0.005109675287261722,
+      "output_activation_scale": {
+        "key": "raw_accumulator_scale",
+        "value": 0.0010914325685824372,
+        "description": "Unquantized logits in baseline. Output scale equals (s_in * s_w). Argmax classification is scale-invariant."
+      },
+      "exact_ratio": 1.0,
+      "classification_identity_format": {
+        "description": "For classification argmax, the integer accumulator (acc + bias_int32) can be used directly without multiplication or shift (ratio = 1.0, M = 1, S = 0). This introduces 0 LSB error and consumes zero DSP cycles.",
+        "multiplier_M": 1,
+        "shift_S": 0
+      },
+      "custom_scale_guidance": "If fixed-point logits are required by downstream logic, select a target logit scale s_logit and compute: ratio = raw_logit_scale / s_logit, then derive M and S. No arbitrary scale was invented here to avoid silent divergence from baseline."
+    }
+  }
+}

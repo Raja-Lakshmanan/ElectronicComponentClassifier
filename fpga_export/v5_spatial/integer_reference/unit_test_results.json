@@ -1,0 +1,40 @@
+{
+  "test1_input_lut": {
+    "passed": true,
+    "entries_tested": 256,
+    "mismatches": 0,
+    "failures": [],
+    "multi_channel_shape_dtype_ok": true
+  },
+  "test2_bias_addition": {
+    "passed": true,
+    "layers_tested": [
+      "conv1",
+      "conv2",
+      "conv3",
+      "fc1",
+      "fc2"
+    ],
+    "dtype": "int64 (no overflow)"
+  },
+  "test3_signed_requant_rounding": {
+    "passed": true,
+    "half_way_test_cases_count": 9,
+    "discrepancies": 0,
+    "relu_nonnegativity_guarantee": true
+  },
+  "test4_pooling": {
+    "passed": true,
+    "maxpool_2x2_ok": true,
+    "avgpool_all_2033_sums_tested": 2033,
+    "avgpool_round_even_discrepancies": 0,
+    "avgpool_round_halfup_discrepancies": 0,
+    "avgpool_even_vs_halfup_quantized_diffs": 40
+  },
+  "test5_transistor_masking": {
+    "passed": true,
+    "sample1_pred": 8,
+    "sample2_pred": 8,
+    "transistor_ever_predicted": false
+  }
+}

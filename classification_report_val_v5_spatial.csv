@@ -1,0 +1,13 @@
+class_index,class_name,support,predicted,precision_pct,recall_pct,f1_score
+0,capacitor,47,43,83.72,76.60,0.8000
+1,diode,17,19,63.16,70.59,0.6667
+2,fuse,24,11,54.55,25.00,0.3429
+3,inductor,31,41,53.66,70.97,0.6111
+4,integrated_circuit,10,8,100.00,80.00,0.8889
+5,led,49,52,78.85,83.67,0.8119
+6,potentiometer,42,47,68.09,76.19,0.7191
+7,push_button,68,55,67.27,54.41,0.6016
+8,resistor,45,57,66.67,84.44,0.7451
+
+SUMMARY,Permitted 9-Class Macro,333,333,70.66,69.10,0.6875
+BASELINE,V4 Baseline Val Macro,-,-,-,64.91%,0.5866

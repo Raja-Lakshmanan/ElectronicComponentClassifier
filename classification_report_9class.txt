@@ -1,0 +1,42 @@
+==============================================================================
+  ComponentCNN-9 — Held-out Test Set Evaluation Report
+  (Transistor strictly excluded; 9 component classes evaluated)
+==============================================================================
+
+Model & Checkpoint Metadata:
+  Architecture        : ComponentCNN9 (3 Conv blocks -> AdaptiveAvgPool -> Linear)
+  Parameters          : 24,169
+  Checkpoint Epoch    : 28
+  Val Macro F1 (ckpt) : 0.5943
+  Val Accuracy (ckpt) : 61.26%
+  Classes Evaluated   : 9
+
+Overall Test Metrics:
+  Total Test Samples  : 346
+  Overall Accuracy    : 56.94%
+  Macro F1-Score      : 0.5621
+  Weighted F1-Score   : 0.5629
+
+Per-Class Classification Breakdown:
+  Class                   Support    Preds  Precision     Recall   F1-Score
+  ------------------------------------------------------------------------
+  capacitor                    48       84     45.24%     79.17%     0.5758
+  diode                        21       33     45.45%     71.43%     0.5556
+  fuse                         25       17     41.18%     28.00%     0.3333
+  inductor                     34       21     66.67%     41.18%     0.5091
+  integrated_circuit           12       10     80.00%     66.67%     0.7273
+  led                          49       57     61.40%     71.43%     0.6604
+  potentiometer                43       31     61.29%     44.19%     0.5135
+  push_button                  69       42     73.81%     44.93%     0.5586
+  resistor                     45       51     58.82%     66.67%     0.6250
+  ------------------------------------------------------------------------
+  Macro Average               346      346     59.32%     57.07%     0.5621
+
+Top Confused Pairs (True -> Predicted):
+  - push_button          -> capacitor            : 17 errors
+  - inductor             -> diode                : 9 errors
+  - potentiometer        -> capacitor            : 9 errors
+  - resistor             -> capacitor            : 7 errors
+  - fuse                 -> led                  : 6 errors
+
+==============================================================================

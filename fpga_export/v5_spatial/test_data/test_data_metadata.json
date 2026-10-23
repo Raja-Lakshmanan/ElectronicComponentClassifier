@@ -1,0 +1,3230 @@
+{
+  "title": "V5-Spatial HLS Test Data Manifest",
+  "generated_at": "2026-10-23T01:00:21.579232",
+  "checkpoint": "checkpoints\\v5_spatial_best_model.pth",
+  "dataset_root": "cleaned_dataset\\test",
+  "sample_count": 346,
+  "class_mapping": {
+    "capacitor": 0,
+    "diode": 1,
+    "fuse": 2,
+    "inductor": 3,
+    "integrated_circuit": 4,
+    "led": 5,
+    "potentiometer": 6,
+    "push_button": 7,
+    "resistor": 8
+  },
+  "permitted_classes": [
+    "capacitor",
+    "diode",
+    "fuse",
+    "inductor",
+    "integrated_circuit",
+    "led",
+    "potentiometer",
+    "push_button",
+    "resistor"
+  ],
+  "excluded_class": "transistor",
+  "excluded_class_index": 9,
+  "preprocessing": {
+    "resize": [
+      64,
+      64
+    ],
+    "interpolation": "bilinear",
+    "color_mode": "RGB",
+    "normalize_mean": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "normalize_std": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "pixel_value_range": [
+      -1.0,
+      1.0
+    ],
+    "layout": "NCHW (3, 64, 64)"
+  },
+  "evaluation_metrics": {
+    "total_samples": 346,
+    "correct_predictions": 238,
+    "accuracy_pct": 68.78612716763006,
+    "macro_f1": 0.6646342495527071
+  },
+  "files": {
+    "X_test.npy": {
+      "path": "fpga_export\\v5_spatial\\test_data\\X_test.npy",
+      "description": "Preprocessed normalized FP32 input images (NCHW)",
+      "shape": [
+        346,
+        3,
+        64,
+        64
+      ],
+      "dtype": "float32",
+      "min": -1.0,
+      "max": 1.0,
+      "size_bytes": 17006720,
+      "sha256": "cdc11b348917239320fe89024e85c270fb755a4d47675190535b702e314a0809"
+    },
+    "y_test.npy": {
+      "path": "fpga_export\\v5_spatial\\test_data\\y_test.npy",
+      "description": "Ground-truth class indices (0..8)",
+      "shape": [
+        346
+      ],
+      "dtype": "int64",
+      "min": 0,
+      "max": 8,
+      "size_bytes": 2896,
+      "sha256": "4afd10655b6b1a2961e29672e93278435d5ed7e43ba5fac5cd58e38b63add0c6"
+    },
+    "y_test_logits_fp32.npy": {
+      "path": "fpga_export\\v5_spatial\\test_data\\y_test_logits_fp32.npy",
+      "description": "Unmasked raw FP32 logits output from PyTorch model (10 classes)",
+      "shape": [
+        346,
+        10
+      ],
+      "dtype": "float32",
+      "min": -41.49966049194336,
+      "max": 11.264665603637695,
+      "size_bytes": 13968,
+      "sha256": "b646ddabfda19e58bf7bc354f908162fa26a973b8be3ba53c92463bcc6349e51"
+    },
+    "y_test_preds.npy": {
+      "path": "fpga_export\\v5_spatial\\test_data\\y_test_preds.npy",
+      "description": "Predicted class indices (0..8) excluding transistor column",
+      "shape": [
+        346
+      ],
+      "dtype": "int64",
+      "min": 0,
+      "max": 8,
+      "size_bytes": 2896,
+      "sha256": "a923756fa73cca1d291d1fd97329ff699e52a9ac5e0da22371a2f4f07ed09129"
+    }
+  },
+  "samples": [
+    {
+      "index": 0,
+      "filename": "Capacitors_aluminum_electrolytic_00007.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00007.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 1,
+      "filename": "Capacitors_aluminum_electrolytic_00020.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00020.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 2,
+      "filename": "Capacitors_aluminum_electrolytic_00021.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00021.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 3,
+      "filename": "Capacitors_aluminum_electrolytic_00026.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00026.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 4,
+      "filename": "Capacitors_aluminum_electrolytic_00027.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00027.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 5,
+      "filename": "Capacitors_aluminum_electrolytic_00038.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00038.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 6,
+      "filename": "Capacitors_aluminum_electrolytic_00067.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00067.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 7,
+      "filename": "Capacitors_aluminum_electrolytic_00081.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00081.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 3,
+      "is_correct": false
+    },
+    {
+      "index": 8,
+      "filename": "Capacitors_aluminum_electrolytic_00088.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00088.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 9,
+      "filename": "Capacitors_aluminum_electrolytic_00090.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00090.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 10,
+      "filename": "Capacitors_aluminum_electrolytic_00094.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00094.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 11,
+      "filename": "Capacitors_aluminum_electrolytic_00104.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00104.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 12,
+      "filename": "Capacitors_aluminum_electrolytic_00113.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00113.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 13,
+      "filename": "Capacitors_aluminum_electrolytic_00127.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00127.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 14,
+      "filename": "Capacitors_aluminum_electrolytic_00143.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00143.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 3,
+      "is_correct": false
+    },
+    {
+      "index": 15,
+      "filename": "Capacitors_aluminum_electrolytic_00152.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00152.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 16,
+      "filename": "Capacitors_aluminum_electrolytic_00185.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00185.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 17,
+      "filename": "Capacitors_aluminum_electrolytic_00192.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00192.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 18,
+      "filename": "Capacitors_aluminum_electrolytic_00208.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00208.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 19,
+      "filename": "Capacitors_aluminum_electrolytic_00210.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00210.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 20,
+      "filename": "Capacitors_aluminum_electrolytic_00214.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00214.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 21,
+      "filename": "Capacitors_aluminum_electrolytic_00216.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00216.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 6,
+      "is_correct": false
+    },
+    {
+      "index": 22,
+      "filename": "Capacitors_aluminum_electrolytic_00225.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00225.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 23,
+      "filename": "Capacitors_aluminum_electrolytic_00235.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00235.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 24,
+      "filename": "Capacitors_aluminum_electrolytic_00251.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00251.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 25,
+      "filename": "Capacitors_aluminum_electrolytic_00262.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00262.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 26,
+      "filename": "Capacitors_aluminum_electrolytic_00267.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00267.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 27,
+      "filename": "Capacitors_aluminum_electrolytic_00277.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00277.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 28,
+      "filename": "Capacitors_aluminum_electrolytic_00316.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00316.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 29,
+      "filename": "Capacitors_aluminum_electrolytic_00318.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00318.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 30,
+      "filename": "Capacitors_aluminum_electrolytic_00320.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00320.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 31,
+      "filename": "Capacitors_aluminum_electrolytic_00338.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00338.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 32,
+      "filename": "Capacitors_aluminum_electrolytic_00341.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00341.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 33,
+      "filename": "Capacitors_aluminum_electrolytic_00353.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00353.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 34,
+      "filename": "Capacitors_aluminum_electrolytic_00354.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00354.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 35,
+      "filename": "Capacitors_aluminum_electrolytic_00397.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00397.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 36,
+      "filename": "Capacitors_aluminum_electrolytic_00400.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00400.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 8,
+      "is_correct": false
+    },
+    {
+      "index": 37,
+      "filename": "Capacitors_aluminum_electrolytic_00417.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00417.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 38,
+      "filename": "Capacitors_aluminum_electrolytic_00427.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00427.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 7,
+      "is_correct": false
+    },
+    {
+      "index": 39,
+      "filename": "Capacitors_aluminum_electrolytic_00464.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00464.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 40,
+      "filename": "Capacitors_aluminum_electrolytic_00481.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00481.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 3,
+      "is_correct": false
+    },
+    {
+      "index": 41,
+      "filename": "Capacitors_aluminum_electrolytic_00489.jpg",
+      "relative_path": "capacitor/Capacitors_aluminum_electrolytic_00489.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 3,
+      "is_correct": false
+    },
+    {
+      "index": 42,
+      "filename": "mica_and_ptfe_capacitors_00065.jpg",
+      "relative_path": "capacitor/mica_and_ptfe_capacitors_00065.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 8,
+      "is_correct": false
+    },
+    {
+      "index": 43,
+      "filename": "mica_and_ptfe_capacitors_00123.jpg",
+      "relative_path": "capacitor/mica_and_ptfe_capacitors_00123.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 3,
+      "is_correct": false
+    },
+    {
+      "index": 44,
+      "filename": "mica_and_ptfe_capacitors_00203.jpg",
+      "relative_path": "capacitor/mica_and_ptfe_capacitors_00203.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 2,
+      "is_correct": false
+    },
+    {
+      "index": 45,
+      "filename": "mica_and_ptfe_capacitors_00306.jpg",
+      "relative_path": "capacitor/mica_and_ptfe_capacitors_00306.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 8,
+      "is_correct": false
+    },
+    {
+      "index": 46,
+      "filename": "mica_and_ptfe_capacitors_00320.jpg",
+      "relative_path": "capacitor/mica_and_ptfe_capacitors_00320.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 2,
+      "is_correct": false
+    },
+    {
+      "index": 47,
+      "filename": "mica_and_ptfe_capacitors_00362.jpg",
+      "relative_path": "capacitor/mica_and_ptfe_capacitors_00362.jpg",
+      "class_name": "capacitor",
+      "ground_truth_label": 0,
+      "predicted_label": 0,
+      "is_correct": true
+    },
+    {
+      "index": 48,
+      "filename": "single_diodes_00032.jpg",
+      "relative_path": "diode/single_diodes_00032.jpg",
+      "class_name": "diode",
+      "ground_truth_label": 1,
+      "predicted_label": 1,
+      "is_correct": true
+    },
+    {
+      "index": 49,
+      "filename": "single_diodes_00042.jpg",
+      "relative_path": "diode/single_diodes_00042.jpg",
+      "class_name": "diode",
+      "ground_truth_label": 1,
+      "predicted_label": 1,
+      "is_correct": true
+    },
+    {
+      "index": 50,
+      "filename": "single_diodes_00108.jpg",
+      "relative_path": "diode/single_diodes_00108.jpg",
+      "class_name": "diode",
+      "ground_truth_label": 1,
+      "predicted_label": 1,
+      "is_correct": true
+    },
+    {
+      "index": 51,
+      "filename": "single_diodes_00110.jpg",
+      "relative_path": "diode/single_diodes_00110.jpg",
+      "class_name": "diode",
+      "ground_truth_label": 1,
+      "predicted_label": 1,
+      "is_correct": true
+    },
+    {
+      "index": 52,
+      "filename": "single_diodes_00123.jpg",
+      "relative_path": "diode/single_diodes_00123.jpg",
+      "class_name": "diode",
+      "ground_truth_label": 1,
+      "predicted_label": 1,
+      "is_correct": true
+    },
+    {
+      "index": 53,
+      "filename": "single_diodes_00136.jpg",
+      "relative_path": "diode/single_diodes_00136.jpg",
+      "class_name": "diode",
+      "ground_truth_label": 1,
+      "predicted_label": 1,
+      "is_correct": true
+    },
+    {
+      "index": 54,
+      "filename": "single_diodes_00138.jpg",
+      "relative_path": "diode/single_diodes_00138.jpg",
+      "class_name": "diode",
+      "ground_truth_label": 1,
+      "predicted_label": 3,
+      "is_correct": false
+    },
+    {
+      "index": 55,
+      "filename": "single_diodes_00174.jpg",
+      "relative_path": "diode/single_diodes_00174.jpg",
+      "class_name": "diode",
+      "ground_truth_label": 1,
+      "predicted_label": 1,
+      "is_correct": true
+    },
+    {
+      "index": 56,
+      "filename": "single_diodes_00185.jpg",
+      "relative_path": "diode/single_diodes_00185.jpg",
+      "class_name": "diode",
+      "ground_truth_label": 1,
+      "predicted_label": 1,
+      "is_correct": true
+    },
+    {
+      "index": 57,
+      "filename": "single_diodes_00256.jpg",
+      "relative_path": "diode/single_diodes_00256.jpg",
+      "class_name": "diode",
+      "ground_truth_label": 1,
+      "predicted_label": 1,
+      "is_correct": true
+    },
+    {
+      "index": 58,
+      "filename": "single_diodes_00288.jpg",
+      "relative_path": "diode/single_diodes_00288.jpg",
+      "class_name": "diode",
+      "ground_truth_label": 1,
+      "predicted_label": 1,
+      "is_correct": true
+    },
+    {
+      "index": 59,
+      "filename": "single_diodes_00345.jpg",
+      "relative_path": "diode/single_diodes_00345.jpg",
+      "class_name": "diode",
+      "ground_truth_label": 1,
+      "predicted_label": 1,
+      "is_correct": true
+    },
+    {
+      "index": 60,
+      "filename": "single_diodes_00375.jpg",
+      "relative_path": "diode/single_diodes_00375.jpg",
+      "class_name": "diode",
+      "ground_truth_label": 1,
+      "predicted_label": 1,
+      "is_correct": true
+    },
+    {
+      "index": 61,
+      "filename": "single_diodes_00395.jpg",
+      "relative_path": "diode/single_diodes_00395.jpg",
+      "class_name": "diode",
+      "ground_truth_label": 1,
+      "predicted_label": 1,
+      "is_correct": true
+    },
+    {
+      "index": 62,
+      "filename": "single_diodes_00408.jpg",
+      "relative_path": "diode/single_diodes_00408.jpg",
+      "class_name": "diode",
+      "ground_truth_label": 1,
+      "predicted_label": 3,
+      "is_correct": false
+    },
+    {
+      "index": 63,
+      "filename": "single_diodes_00415.jpg",
+      "relative_path": "diode/single_diodes_00415.jpg",
+      "class_name": "diode",
+      "ground_truth_label": 1,
+      "predicted_label": 3,
+      "is_correct": false
+    },
+    {
+      "index": 64,
+      "filename": "single_diodes_00450.jpg",
+      "relative_path": "diode/single_diodes_00450.jpg",
+      "class_name": "diode",
+      "ground_truth_label": 1,
+      "predicted_label": 3,
+      "is_correct": false
+    },
+    {
+      "index": 65,
+      "filename": "single_diodes_00460.jpg",
+      "relative_path": "diode/single_diodes_00460.jpg",
+      "class_name": "diode",
+      "ground_truth_label": 1,
+      "predicted_label": 1,
+      "is_correct": true
+    },
+    {
+      "index": 66,
+      "filename": "single_diodes_00463.jpg",
+      "relative_path": "diode/single_diodes_00463.jpg",
+      "class_name": "diode",
+      "ground_truth_label": 1,
+      "predicted_label": 1,
+      "is_correct": true
+    },
+    {
+      "index": 67,
+      "filename": "single_diodes_00470.jpg",
+      "relative_path": "diode/single_diodes_00470.jpg",
+      "class_name": "diode",
+      "ground_truth_label": 1,
+      "predicted_label": 8,
+      "is_correct": false
+    },
+    {
+      "index": 68,
+      "filename": "single_diodes_00489.jpg",
+      "relative_path": "diode/single_diodes_00489.jpg",
+      "class_name": "diode",
+      "ground_truth_label": 1,
+      "predicted_label": 1,
+      "is_correct": true
+    },
+    {
+      "index": 69,
+      "filename": "fuses_00000.jpg",
+      "relative_path": "fuse/fuses_00000.jpg",
+      "class_name": "fuse",
+      "ground_truth_label": 2,
+      "predicted_label": 3,
+      "is_correct": false
+    },
+    {
+      "index": 70,
+      "filename": "fuses_00015.jpg",
+      "relative_path": "fuse/fuses_00015.jpg",
+      "class_name": "fuse",
+      "ground_truth_label": 2,
+      "predicted_label": 2,
+      "is_correct": true
+    },
+    {
+      "index": 71,
+      "filename": "fuses_00023.jpg",
+      "relative_path": "fuse/fuses_00023.jpg",
+      "class_name": "fuse",
+      "ground_truth_label": 2,
+      "predicted_label": 2,
+      "is_correct": true
+    },
+    {
+      "index": 72,
+      "filename": "fuses_00047.jpg",
+      "relative_path": "fuse/fuses_00047.jpg",
+      "class_name": "fuse",
+      "ground_truth_label": 2,
+      "predicted_label": 2,
+      "is_correct": true
+    },
+    {
+      "index": 73,
+      "filename": "fuses_00067.jpg",
+      "relative_path": "fuse/fuses_00067.jpg",
+      "class_name": "fuse",
+      "ground_truth_label": 2,
+      "predicted_label": 7,
+      "is_correct": false
+    },
+    {
+      "index": 74,
+      "filename": "fuses_00079.jpg",
+      "relative_path": "fuse/fuses_00079.jpg",
+      "class_name": "fuse",
+      "ground_truth_label": 2,
+      "predicted_label": 8,
+      "is_correct": false
+    },
+    {
+      "index": 75,
+      "filename": "fuses_00085.jpg",
+      "relative_path": "fuse/fuses_00085.jpg",
+      "class_name": "fuse",
+      "ground_truth_label": 2,
+      "predicted_label": 2,
+      "is_correct": true
+    },
+    {
+      "index": 76,
+      "filename": "fuses_00129.jpg",
+      "relative_path": "fuse/fuses_00129.jpg",
+      "class_name": "fuse",
+      "ground_truth_label": 2,
+      "predicted_label": 5,
+      "is_correct": false
+    },
+    {
+      "index": 77,
+      "filename": "fuses_00131.jpg",
+      "relative_path": "fuse/fuses_00131.jpg",
+      "class_name": "fuse",
+      "ground_truth_label": 2,
+      "predicted_label": 8,
+      "is_correct": false
+    },
+    {
+      "index": 78,
+      "filename": "fuses_00179.jpg",
+      "relative_path": "fuse/fuses_00179.jpg",
+      "class_name": "fuse",
+      "ground_truth_label": 2,
+      "predicted_label": 5,
+      "is_correct": false
+    },
+    {
+      "index": 79,
+      "filename": "fuses_00228.jpg",
+      "relative_path": "fuse/fuses_00228.jpg",
+      "class_name": "fuse",
+      "ground_truth_label": 2,
+      "predicted_label": 2,
+      "is_correct": true
+    },
+    {
+      "index": 80,
+      "filename": "fuses_00253.jpg",
+      "relative_path": "fuse/fuses_00253.jpg",
+      "class_name": "fuse",
+      "ground_truth_label": 2,
+      "predicted_label": 8,
+      "is_correct": false
+    },
+    {
+      "index": 81,
+      "filename": "fuses_00265.jpg",
+      "relative_path": "fuse/fuses_00265.jpg",
+      "class_name": "fuse",
+      "ground_truth_label": 2,
+      "predicted_label": 3,
+      "is_correct": false
+    },
+    {
+      "index": 82,
+      "filename": "fuses_00277.jpg",
+      "relative_path": "fuse/fuses_00277.jpg",
+      "class_name": "fuse",
+      "ground_truth_label": 2,
+      "predicted_label": 5,
+      "is_correct": false
+    },
+    {
+      "index": 83,
+      "filename": "fuses_00292.jpg",
+      "relative_path": "fuse/fuses_00292.jpg",
+      "class_name": "fuse",
+      "ground_truth_label": 2,
+      "predicted_label": 5,
+      "is_correct": false
+    },
+    {
+      "index": 84,
+      "filename": "fuses_00361.jpg",
+      "relative_path": "fuse/fuses_00361.jpg",
+      "class_name": "fuse",
+      "ground_truth_label": 2,
+      "predicted_label": 2,
+      "is_correct": true
+    },
+    {
+      "index": 85,
+      "filename": "fuses_00362.jpg",
+      "relative_path": "fuse/fuses_00362.jpg",
+      "class_name": "fuse",
+      "ground_truth_label": 2,
+      "predicted_label": 8,
+      "is_correct": false
+    },
+    {
+      "index": 86,
+      "filename": "fuses_00434.jpg",
+      "relative_path": "fuse/fuses_00434.jpg",
+      "class_name": "fuse",
+      "ground_truth_label": 2,
+      "predicted_label": 2,
+      "is_correct": true
+    },
+    {
+      "index": 87,
+      "filename": "fuses_00443.jpg",
+      "relative_path": "fuse/fuses_00443.jpg",
+      "class_name": "fuse",
+      "ground_truth_label": 2,
+      "predicted_label": 6,
+      "is_correct": false
+    },
+    {
+      "index": 88,
+      "filename": "fuses_00455.jpg",
+      "relative_path": "fuse/fuses_00455.jpg",
+      "class_name": "fuse",
+      "ground_truth_label": 2,
+      "predicted_label": 2,
+      "is_correct": true
+    },
+    {
+      "index": 89,
+      "filename": "fuses_00470.jpg",
+      "relative_path": "fuse/fuses_00470.jpg",
+      "class_name": "fuse",
+      "ground_truth_label": 2,
+      "predicted_label": 7,
+      "is_correct": false
+    },
+    {
+      "index": 90,
+      "filename": "fuses_00481.jpg",
+      "relative_path": "fuse/fuses_00481.jpg",
+      "class_name": "fuse",
+      "ground_truth_label": 2,
+      "predicted_label": 5,
+      "is_correct": false
+    },
+    {
+      "index": 91,
+      "filename": "fuses_00483.jpg",
+      "relative_path": "fuse/fuses_00483.jpg",
+      "class_name": "fuse",
+      "ground_truth_label": 2,
+      "predicted_label": 8,
+      "is_correct": false
+    },
+    {
+      "index": 92,
+      "filename": "fuses_00485.jpg",
+      "relative_path": "fuse/fuses_00485.jpg",
+      "class_name": "fuse",
+      "ground_truth_label": 2,
+      "predicted_label": 6,
+      "is_correct": false
+    },
+    {
+      "index": 93,
+      "filename": "fuses_00489.jpg",
+      "relative_path": "fuse/fuses_00489.jpg",
+      "class_name": "fuse",
+      "ground_truth_label": 2,
+      "predicted_label": 3,
+      "is_correct": false
+    },
+    {
+      "index": 94,
+      "filename": "fixed_inductors_00001.jpg",
+      "relative_path": "inductor/fixed_inductors_00001.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 5,
+      "is_correct": false
+    },
+    {
+      "index": 95,
+      "filename": "fixed_inductors_00009.jpg",
+      "relative_path": "inductor/fixed_inductors_00009.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 3,
+      "is_correct": true
+    },
+    {
+      "index": 96,
+      "filename": "fixed_inductors_00011.jpg",
+      "relative_path": "inductor/fixed_inductors_00011.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 3,
+      "is_correct": true
+    },
+    {
+      "index": 97,
+      "filename": "fixed_inductors_00130.jpg",
+      "relative_path": "inductor/fixed_inductors_00130.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 8,
+      "is_correct": false
+    },
+    {
+      "index": 98,
+      "filename": "fixed_inductors_00149.jpg",
+      "relative_path": "inductor/fixed_inductors_00149.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 3,
+      "is_correct": true
+    },
+    {
+      "index": 99,
+      "filename": "fixed_inductors_00192.jpg",
+      "relative_path": "inductor/fixed_inductors_00192.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 3,
+      "is_correct": true
+    },
+    {
+      "index": 100,
+      "filename": "fixed_inductors_00219.jpg",
+      "relative_path": "inductor/fixed_inductors_00219.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 3,
+      "is_correct": true
+    },
+    {
+      "index": 101,
+      "filename": "fixed_inductors_00231.jpg",
+      "relative_path": "inductor/fixed_inductors_00231.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 1,
+      "is_correct": false
+    },
+    {
+      "index": 102,
+      "filename": "fixed_inductors_00256.jpg",
+      "relative_path": "inductor/fixed_inductors_00256.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 1,
+      "is_correct": false
+    },
+    {
+      "index": 103,
+      "filename": "fixed_inductors_00263.jpg",
+      "relative_path": "inductor/fixed_inductors_00263.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 4,
+      "is_correct": false
+    },
+    {
+      "index": 104,
+      "filename": "fixed_inductors_00276.jpg",
+      "relative_path": "inductor/fixed_inductors_00276.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 1,
+      "is_correct": false
+    },
+    {
+      "index": 105,
+      "filename": "fixed_inductors_00281.jpg",
+      "relative_path": "inductor/fixed_inductors_00281.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 3,
+      "is_correct": true
+    },
+    {
+      "index": 106,
+      "filename": "fixed_inductors_00293.jpg",
+      "relative_path": "inductor/fixed_inductors_00293.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 1,
+      "is_correct": false
+    },
+    {
+      "index": 107,
+      "filename": "fixed_inductors_00299.jpg",
+      "relative_path": "inductor/fixed_inductors_00299.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 1,
+      "is_correct": false
+    },
+    {
+      "index": 108,
+      "filename": "fixed_inductors_00310.jpg",
+      "relative_path": "inductor/fixed_inductors_00310.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 3,
+      "is_correct": true
+    },
+    {
+      "index": 109,
+      "filename": "fixed_inductors_00327.jpg",
+      "relative_path": "inductor/fixed_inductors_00327.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 3,
+      "is_correct": true
+    },
+    {
+      "index": 110,
+      "filename": "fixed_inductors_00340.jpg",
+      "relative_path": "inductor/fixed_inductors_00340.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 3,
+      "is_correct": true
+    },
+    {
+      "index": 111,
+      "filename": "fixed_inductors_00343.jpg",
+      "relative_path": "inductor/fixed_inductors_00343.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 3,
+      "is_correct": true
+    },
+    {
+      "index": 112,
+      "filename": "fixed_inductors_00358.jpg",
+      "relative_path": "inductor/fixed_inductors_00358.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 3,
+      "is_correct": true
+    },
+    {
+      "index": 113,
+      "filename": "fixed_inductors_00359.jpg",
+      "relative_path": "inductor/fixed_inductors_00359.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 3,
+      "is_correct": true
+    },
+    {
+      "index": 114,
+      "filename": "fixed_inductors_00366.jpg",
+      "relative_path": "inductor/fixed_inductors_00366.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 4,
+      "is_correct": false
+    },
+    {
+      "index": 115,
+      "filename": "fixed_inductors_00376.jpg",
+      "relative_path": "inductor/fixed_inductors_00376.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 3,
+      "is_correct": true
+    },
+    {
+      "index": 116,
+      "filename": "fixed_inductors_00391.jpg",
+      "relative_path": "inductor/fixed_inductors_00391.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 3,
+      "is_correct": true
+    },
+    {
+      "index": 117,
+      "filename": "fixed_inductors_00403.jpg",
+      "relative_path": "inductor/fixed_inductors_00403.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 3,
+      "is_correct": true
+    },
+    {
+      "index": 118,
+      "filename": "fixed_inductors_00424.jpg",
+      "relative_path": "inductor/fixed_inductors_00424.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 3,
+      "is_correct": true
+    },
+    {
+      "index": 119,
+      "filename": "fixed_inductors_00426.jpg",
+      "relative_path": "inductor/fixed_inductors_00426.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 3,
+      "is_correct": true
+    },
+    {
+      "index": 120,
+      "filename": "fixed_inductors_00447.jpg",
+      "relative_path": "inductor/fixed_inductors_00447.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 3,
+      "is_correct": true
+    },
+    {
+      "index": 121,
+      "filename": "fixed_inductors_00450.jpg",
+      "relative_path": "inductor/fixed_inductors_00450.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 1,
+      "is_correct": false
+    },
+    {
+      "index": 122,
+      "filename": "fixed_inductors_00455.jpg",
+      "relative_path": "inductor/fixed_inductors_00455.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 3,
+      "is_correct": true
+    },
+    {
+      "index": 123,
+      "filename": "fixed_inductors_00459.jpg",
+      "relative_path": "inductor/fixed_inductors_00459.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 3,
+      "is_correct": true
+    },
+    {
+      "index": 124,
+      "filename": "fixed_inductors_00463.jpg",
+      "relative_path": "inductor/fixed_inductors_00463.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 5,
+      "is_correct": false
+    },
+    {
+      "index": 125,
+      "filename": "fixed_inductors_00475.jpg",
+      "relative_path": "inductor/fixed_inductors_00475.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 3,
+      "is_correct": true
+    },
+    {
+      "index": 126,
+      "filename": "fixed_inductors_00476.jpg",
+      "relative_path": "inductor/fixed_inductors_00476.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 3,
+      "is_correct": true
+    },
+    {
+      "index": 127,
+      "filename": "fixed_inductors_00484.jpg",
+      "relative_path": "inductor/fixed_inductors_00484.jpg",
+      "class_name": "inductor",
+      "ground_truth_label": 3,
+      "predicted_label": 3,
+      "is_correct": true
+    },
+    {
+      "index": 128,
+      "filename": "instrumentation__op_amps__buffer_amps_00005.jpg",
+      "relative_path": "integrated_circuit/instrumentation__op_amps__buffer_amps_00005.jpg",
+      "class_name": "integrated_circuit",
+      "ground_truth_label": 4,
+      "predicted_label": 4,
+      "is_correct": true
+    },
+    {
+      "index": 129,
+      "filename": "instrumentation__op_amps__buffer_amps_00036.jpg",
+      "relative_path": "integrated_circuit/instrumentation__op_amps__buffer_amps_00036.jpg",
+      "class_name": "integrated_circuit",
+      "ground_truth_label": 4,
+      "predicted_label": 4,
+      "is_correct": true
+    },
+    {
+      "index": 130,
+      "filename": "instrumentation__op_amps__buffer_amps_00055.jpg",
+      "relative_path": "integrated_circuit/instrumentation__op_amps__buffer_amps_00055.jpg",
+      "class_name": "integrated_circuit",
+      "ground_truth_label": 4,
+      "predicted_label": 1,
+      "is_correct": false
+    },
+    {
+      "index": 131,
+      "filename": "instrumentation__op_amps__buffer_amps_00154.jpg",
+      "relative_path": "integrated_circuit/instrumentation__op_amps__buffer_amps_00154.jpg",
+      "class_name": "integrated_circuit",
+      "ground_truth_label": 4,
+      "predicted_label": 4,
+      "is_correct": true
+    },
+    {
+      "index": 132,
+      "filename": "instrumentation__op_amps__buffer_amps_00155.jpg",
+      "relative_path": "integrated_circuit/instrumentation__op_amps__buffer_amps_00155.jpg",
+      "class_name": "integrated_circuit",
+      "ground_truth_label": 4,
+      "predicted_label": 1,
+      "is_correct": false
+    },
+    {
+      "index": 133,
+      "filename": "instrumentation__op_amps__buffer_amps_00161.jpg",
+      "relative_path": "integrated_circuit/instrumentation__op_amps__buffer_amps_00161.jpg",
+      "class_name": "integrated_circuit",
+      "ground_truth_label": 4,
+      "predicted_label": 4,
+      "is_correct": true
+    },
+    {
+      "index": 134,
+      "filename": "instrumentation__op_amps__buffer_amps_00167.jpg",
+      "relative_path": "integrated_circuit/instrumentation__op_amps__buffer_amps_00167.jpg",
+      "class_name": "integrated_circuit",
+      "ground_truth_label": 4,
+      "predicted_label": 4,
+      "is_correct": true
+    },
+    {
+      "index": 135,
+      "filename": "instrumentation__op_amps__buffer_amps_00381.jpg",
+      "relative_path": "integrated_circuit/instrumentation__op_amps__buffer_amps_00381.jpg",
+      "class_name": "integrated_circuit",
+      "ground_truth_label": 4,
+      "predicted_label": 4,
+      "is_correct": true
+    },
+    {
+      "index": 136,
+      "filename": "instrumentation__op_amps__buffer_amps_00418.jpg",
+      "relative_path": "integrated_circuit/instrumentation__op_amps__buffer_amps_00418.jpg",
+      "class_name": "integrated_circuit",
+      "ground_truth_label": 4,
+      "predicted_label": 4,
+      "is_correct": true
+    },
+    {
+      "index": 137,
+      "filename": "instrumentation__op_amps__buffer_amps_00422.jpg",
+      "relative_path": "integrated_circuit/instrumentation__op_amps__buffer_amps_00422.jpg",
+      "class_name": "integrated_circuit",
+      "ground_truth_label": 4,
+      "predicted_label": 4,
+      "is_correct": true
+    },
+    {
+      "index": 138,
+      "filename": "instrumentation__op_amps__buffer_amps_00468.jpg",
+      "relative_path": "integrated_circuit/instrumentation__op_amps__buffer_amps_00468.jpg",
+      "class_name": "integrated_circuit",
+      "ground_truth_label": 4,
+      "predicted_label": 1,
+      "is_correct": false
+    },
+    {
+      "index": 139,
+      "filename": "instrumentation__op_amps__buffer_amps_00475.jpg",
+      "relative_path": "integrated_circuit/instrumentation__op_amps__buffer_amps_00475.jpg",
+      "class_name": "integrated_circuit",
+      "ground_truth_label": 4,
+      "predicted_label": 1,
+      "is_correct": false
+    },
+    {
+      "index": 140,
+      "filename": "led_character_and_numeric_00010.jpg",
+      "relative_path": "led/led_character_and_numeric_00010.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 141,
+      "filename": "led_character_and_numeric_00013.jpg",
+      "relative_path": "led/led_character_and_numeric_00013.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 142,
+      "filename": "led_character_and_numeric_00021.jpg",
+      "relative_path": "led/led_character_and_numeric_00021.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 143,
+      "filename": "led_character_and_numeric_00031.jpg",
+      "relative_path": "led/led_character_and_numeric_00031.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 144,
+      "filename": "led_character_and_numeric_00038.jpg",
+      "relative_path": "led/led_character_and_numeric_00038.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 145,
+      "filename": "led_character_and_numeric_00044.jpg",
+      "relative_path": "led/led_character_and_numeric_00044.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 0,
+      "is_correct": false
+    },
+    {
+      "index": 146,
+      "filename": "led_character_and_numeric_00050.jpg",
+      "relative_path": "led/led_character_and_numeric_00050.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 147,
+      "filename": "led_character_and_numeric_00069.jpg",
+      "relative_path": "led/led_character_and_numeric_00069.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 148,
+      "filename": "led_character_and_numeric_00074.jpg",
+      "relative_path": "led/led_character_and_numeric_00074.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 149,
+      "filename": "led_character_and_numeric_00085.jpg",
+      "relative_path": "led/led_character_and_numeric_00085.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 150,
+      "filename": "led_character_and_numeric_00092.jpg",
+      "relative_path": "led/led_character_and_numeric_00092.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 151,
+      "filename": "led_character_and_numeric_00109.jpg",
+      "relative_path": "led/led_character_and_numeric_00109.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 152,
+      "filename": "led_character_and_numeric_00114.jpg",
+      "relative_path": "led/led_character_and_numeric_00114.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 6,
+      "is_correct": false
+    },
+    {
+      "index": 153,
+      "filename": "led_character_and_numeric_00126.jpg",
+      "relative_path": "led/led_character_and_numeric_00126.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 154,
+      "filename": "led_character_and_numeric_00142.jpg",
+      "relative_path": "led/led_character_and_numeric_00142.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 155,
+      "filename": "led_character_and_numeric_00144.jpg",
+      "relative_path": "led/led_character_and_numeric_00144.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 4,
+      "is_correct": false
+    },
+    {
+      "index": 156,
+      "filename": "led_character_and_numeric_00156.jpg",
+      "relative_path": "led/led_character_and_numeric_00156.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 157,
+      "filename": "led_character_and_numeric_00164.jpg",
+      "relative_path": "led/led_character_and_numeric_00164.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 158,
+      "filename": "led_character_and_numeric_00165.jpg",
+      "relative_path": "led/led_character_and_numeric_00165.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 159,
+      "filename": "led_character_and_numeric_00167.jpg",
+      "relative_path": "led/led_character_and_numeric_00167.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 1,
+      "is_correct": false
+    },
+    {
+      "index": 160,
+      "filename": "led_character_and_numeric_00172.jpg",
+      "relative_path": "led/led_character_and_numeric_00172.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 161,
+      "filename": "led_character_and_numeric_00178.jpg",
+      "relative_path": "led/led_character_and_numeric_00178.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 162,
+      "filename": "led_character_and_numeric_00185.jpg",
+      "relative_path": "led/led_character_and_numeric_00185.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 3,
+      "is_correct": false
+    },
+    {
+      "index": 163,
+      "filename": "led_character_and_numeric_00202.jpg",
+      "relative_path": "led/led_character_and_numeric_00202.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 164,
+      "filename": "led_character_and_numeric_00205.jpg",
+      "relative_path": "led/led_character_and_numeric_00205.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 3,
+      "is_correct": false
+    },
+    {
+      "index": 165,
+      "filename": "led_character_and_numeric_00213.jpg",
+      "relative_path": "led/led_character_and_numeric_00213.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 166,
+      "filename": "led_character_and_numeric_00229.jpg",
+      "relative_path": "led/led_character_and_numeric_00229.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 167,
+      "filename": "led_character_and_numeric_00267.jpg",
+      "relative_path": "led/led_character_and_numeric_00267.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 168,
+      "filename": "led_character_and_numeric_00284.jpg",
+      "relative_path": "led/led_character_and_numeric_00284.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 169,
+      "filename": "led_character_and_numeric_00289.jpg",
+      "relative_path": "led/led_character_and_numeric_00289.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 170,
+      "filename": "led_character_and_numeric_00293.jpg",
+      "relative_path": "led/led_character_and_numeric_00293.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 171,
+      "filename": "led_character_and_numeric_00294.jpg",
+      "relative_path": "led/led_character_and_numeric_00294.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 172,
+      "filename": "led_character_and_numeric_00296.jpg",
+      "relative_path": "led/led_character_and_numeric_00296.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 7,
+      "is_correct": false
+    },
+    {
+      "index": 173,
+      "filename": "led_character_and_numeric_00315.jpg",
+      "relative_path": "led/led_character_and_numeric_00315.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 174,
+      "filename": "led_character_and_numeric_00318.jpg",
+      "relative_path": "led/led_character_and_numeric_00318.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 7,
+      "is_correct": false
+    },
+    {
+      "index": 175,
+      "filename": "led_character_and_numeric_00337.jpg",
+      "relative_path": "led/led_character_and_numeric_00337.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 176,
+      "filename": "led_character_and_numeric_00339.jpg",
+      "relative_path": "led/led_character_and_numeric_00339.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 177,
+      "filename": "led_character_and_numeric_00352.jpg",
+      "relative_path": "led/led_character_and_numeric_00352.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 178,
+      "filename": "led_character_and_numeric_00369.jpg",
+      "relative_path": "led/led_character_and_numeric_00369.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 179,
+      "filename": "led_character_and_numeric_00383.jpg",
+      "relative_path": "led/led_character_and_numeric_00383.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 180,
+      "filename": "led_character_and_numeric_00385.jpg",
+      "relative_path": "led/led_character_and_numeric_00385.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 181,
+      "filename": "led_character_and_numeric_00408.jpg",
+      "relative_path": "led/led_character_and_numeric_00408.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 182,
+      "filename": "led_character_and_numeric_00416.jpg",
+      "relative_path": "led/led_character_and_numeric_00416.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 183,
+      "filename": "led_character_and_numeric_00425.jpg",
+      "relative_path": "led/led_character_and_numeric_00425.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 184,
+      "filename": "led_character_and_numeric_00430.jpg",
+      "relative_path": "led/led_character_and_numeric_00430.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 185,
+      "filename": "led_character_and_numeric_00439.jpg",
+      "relative_path": "led/led_character_and_numeric_00439.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 186,
+      "filename": "led_character_and_numeric_00474.jpg",
+      "relative_path": "led/led_character_and_numeric_00474.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 3,
+      "is_correct": false
+    },
+    {
+      "index": 187,
+      "filename": "led_character_and_numeric_00477.jpg",
+      "relative_path": "led/led_character_and_numeric_00477.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 188,
+      "filename": "led_character_and_numeric_00484.jpg",
+      "relative_path": "led/led_character_and_numeric_00484.jpg",
+      "class_name": "led",
+      "ground_truth_label": 5,
+      "predicted_label": 5,
+      "is_correct": true
+    },
+    {
+      "index": 189,
+      "filename": "rotary_potentiometers__rheostats_00012.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00012.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 190,
+      "filename": "rotary_potentiometers__rheostats_00018.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00018.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 7,
+      "is_correct": false
+    },
+    {
+      "index": 191,
+      "filename": "rotary_potentiometers__rheostats_00030.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00030.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 8,
+      "is_correct": false
+    },
+    {
+      "index": 192,
+      "filename": "rotary_potentiometers__rheostats_00046.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00046.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 2,
+      "is_correct": false
+    },
+    {
+      "index": 193,
+      "filename": "rotary_potentiometers__rheostats_00051.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00051.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 7,
+      "is_correct": false
+    },
+    {
+      "index": 194,
+      "filename": "rotary_potentiometers__rheostats_00063.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00063.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 5,
+      "is_correct": false
+    },
+    {
+      "index": 195,
+      "filename": "rotary_potentiometers__rheostats_00087.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00087.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 7,
+      "is_correct": false
+    },
+    {
+      "index": 196,
+      "filename": "rotary_potentiometers__rheostats_00088.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00088.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 197,
+      "filename": "rotary_potentiometers__rheostats_00094.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00094.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 198,
+      "filename": "rotary_potentiometers__rheostats_00100.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00100.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 199,
+      "filename": "rotary_potentiometers__rheostats_00111.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00111.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 7,
+      "is_correct": false
+    },
+    {
+      "index": 200,
+      "filename": "rotary_potentiometers__rheostats_00113.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00113.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 2,
+      "is_correct": false
+    },
+    {
+      "index": 201,
+      "filename": "rotary_potentiometers__rheostats_00137.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00137.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 202,
+      "filename": "rotary_potentiometers__rheostats_00165.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00165.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 203,
+      "filename": "rotary_potentiometers__rheostats_00202.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00202.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 7,
+      "is_correct": false
+    },
+    {
+      "index": 204,
+      "filename": "rotary_potentiometers__rheostats_00204.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00204.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 205,
+      "filename": "rotary_potentiometers__rheostats_00210.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00210.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 206,
+      "filename": "rotary_potentiometers__rheostats_00211.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00211.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 207,
+      "filename": "rotary_potentiometers__rheostats_00227.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00227.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 208,
+      "filename": "rotary_potentiometers__rheostats_00244.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00244.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 209,
+      "filename": "rotary_potentiometers__rheostats_00263.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00263.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 7,
+      "is_correct": false
+    },
+    {
+      "index": 210,
+      "filename": "rotary_potentiometers__rheostats_00264.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00264.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 211,
+      "filename": "rotary_potentiometers__rheostats_00318.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00318.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 212,
+      "filename": "rotary_potentiometers__rheostats_00322.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00322.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 7,
+      "is_correct": false
+    },
+    {
+      "index": 213,
+      "filename": "rotary_potentiometers__rheostats_00327.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00327.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 7,
+      "is_correct": false
+    },
+    {
+      "index": 214,
+      "filename": "rotary_potentiometers__rheostats_00331.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00331.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 215,
+      "filename": "rotary_potentiometers__rheostats_00357.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00357.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 216,
+      "filename": "rotary_potentiometers__rheostats_00359.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00359.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 217,
+      "filename": "rotary_potentiometers__rheostats_00363.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00363.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 218,
+      "filename": "rotary_potentiometers__rheostats_00366.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00366.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 219,
+      "filename": "rotary_potentiometers__rheostats_00371.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00371.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 220,
+      "filename": "rotary_potentiometers__rheostats_00380.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00380.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 221,
+      "filename": "rotary_potentiometers__rheostats_00396.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00396.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 222,
+      "filename": "rotary_potentiometers__rheostats_00403.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00403.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 0,
+      "is_correct": false
+    },
+    {
+      "index": 223,
+      "filename": "rotary_potentiometers__rheostats_00408.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00408.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 224,
+      "filename": "rotary_potentiometers__rheostats_00423.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00423.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 8,
+      "is_correct": false
+    },
+    {
+      "index": 225,
+      "filename": "rotary_potentiometers__rheostats_00425.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00425.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 226,
+      "filename": "rotary_potentiometers__rheostats_00426.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00426.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 227,
+      "filename": "rotary_potentiometers__rheostats_00434.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00434.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 228,
+      "filename": "rotary_potentiometers__rheostats_00458.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00458.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 7,
+      "is_correct": false
+    },
+    {
+      "index": 229,
+      "filename": "rotary_potentiometers__rheostats_00464.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00464.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 7,
+      "is_correct": false
+    },
+    {
+      "index": 230,
+      "filename": "rotary_potentiometers__rheostats_00475.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00475.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 7,
+      "is_correct": false
+    },
+    {
+      "index": 231,
+      "filename": "rotary_potentiometers__rheostats_00499.jpg",
+      "relative_path": "potentiometer/rotary_potentiometers__rheostats_00499.jpg",
+      "class_name": "potentiometer",
+      "ground_truth_label": 6,
+      "predicted_label": 6,
+      "is_correct": true
+    },
+    {
+      "index": 232,
+      "filename": "pushbutton_switches_00003.jpg",
+      "relative_path": "push_button/pushbutton_switches_00003.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 3,
+      "is_correct": false
+    },
+    {
+      "index": 233,
+      "filename": "pushbutton_switches_00010.jpg",
+      "relative_path": "push_button/pushbutton_switches_00010.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 6,
+      "is_correct": false
+    },
+    {
+      "index": 234,
+      "filename": "pushbutton_switches_00011.jpg",
+      "relative_path": "push_button/pushbutton_switches_00011.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 235,
+      "filename": "pushbutton_switches_00023.jpg",
+      "relative_path": "push_button/pushbutton_switches_00023.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 0,
+      "is_correct": false
+    },
+    {
+      "index": 236,
+      "filename": "pushbutton_switches_00038.jpg",
+      "relative_path": "push_button/pushbutton_switches_00038.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 237,
+      "filename": "pushbutton_switches_00041.jpg",
+      "relative_path": "push_button/pushbutton_switches_00041.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 238,
+      "filename": "pushbutton_switches_00042.jpg",
+      "relative_path": "push_button/pushbutton_switches_00042.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 239,
+      "filename": "pushbutton_switches_00047.jpg",
+      "relative_path": "push_button/pushbutton_switches_00047.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 240,
+      "filename": "pushbutton_switches_00057.jpg",
+      "relative_path": "push_button/pushbutton_switches_00057.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 241,
+      "filename": "pushbutton_switches_00061.jpg",
+      "relative_path": "push_button/pushbutton_switches_00061.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 242,
+      "filename": "pushbutton_switches_00064.jpg",
+      "relative_path": "push_button/pushbutton_switches_00064.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 3,
+      "is_correct": false
+    },
+    {
+      "index": 243,
+      "filename": "pushbutton_switches_00069.jpg",
+      "relative_path": "push_button/pushbutton_switches_00069.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 244,
+      "filename": "pushbutton_switches_00089.jpg",
+      "relative_path": "push_button/pushbutton_switches_00089.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 245,
+      "filename": "pushbutton_switches_00090.jpg",
+      "relative_path": "push_button/pushbutton_switches_00090.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 246,
+      "filename": "pushbutton_switches_00092.jpg",
+      "relative_path": "push_button/pushbutton_switches_00092.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 247,
+      "filename": "pushbutton_switches_00103.jpg",
+      "relative_path": "push_button/pushbutton_switches_00103.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 248,
+      "filename": "pushbutton_switches_00117.jpg",
+      "relative_path": "push_button/pushbutton_switches_00117.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 6,
+      "is_correct": false
+    },
+    {
+      "index": 249,
+      "filename": "pushbutton_switches_00121.jpg",
+      "relative_path": "push_button/pushbutton_switches_00121.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 3,
+      "is_correct": false
+    },
+    {
+      "index": 250,
+      "filename": "pushbutton_switches_00128.jpg",
+      "relative_path": "push_button/pushbutton_switches_00128.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 251,
+      "filename": "pushbutton_switches_00156.jpg",
+      "relative_path": "push_button/pushbutton_switches_00156.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 252,
+      "filename": "pushbutton_switches_00168.jpg",
+      "relative_path": "push_button/pushbutton_switches_00168.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 253,
+      "filename": "pushbutton_switches_00170.jpg",
+      "relative_path": "push_button/pushbutton_switches_00170.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 254,
+      "filename": "pushbutton_switches_00176.jpg",
+      "relative_path": "push_button/pushbutton_switches_00176.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 2,
+      "is_correct": false
+    },
+    {
+      "index": 255,
+      "filename": "pushbutton_switches_00177.jpg",
+      "relative_path": "push_button/pushbutton_switches_00177.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 3,
+      "is_correct": false
+    },
+    {
+      "index": 256,
+      "filename": "pushbutton_switches_00180.jpg",
+      "relative_path": "push_button/pushbutton_switches_00180.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 6,
+      "is_correct": false
+    },
+    {
+      "index": 257,
+      "filename": "pushbutton_switches_00186.jpg",
+      "relative_path": "push_button/pushbutton_switches_00186.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 258,
+      "filename": "pushbutton_switches_00192.jpg",
+      "relative_path": "push_button/pushbutton_switches_00192.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 8,
+      "is_correct": false
+    },
+    {
+      "index": 259,
+      "filename": "pushbutton_switches_00195.jpg",
+      "relative_path": "push_button/pushbutton_switches_00195.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 260,
+      "filename": "pushbutton_switches_00199.jpg",
+      "relative_path": "push_button/pushbutton_switches_00199.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 6,
+      "is_correct": false
+    },
+    {
+      "index": 261,
+      "filename": "pushbutton_switches_00209.jpg",
+      "relative_path": "push_button/pushbutton_switches_00209.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 262,
+      "filename": "pushbutton_switches_00220.jpg",
+      "relative_path": "push_button/pushbutton_switches_00220.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 0,
+      "is_correct": false
+    },
+    {
+      "index": 263,
+      "filename": "pushbutton_switches_00221.jpg",
+      "relative_path": "push_button/pushbutton_switches_00221.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 264,
+      "filename": "pushbutton_switches_00223.jpg",
+      "relative_path": "push_button/pushbutton_switches_00223.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 3,
+      "is_correct": false
+    },
+    {
+      "index": 265,
+      "filename": "pushbutton_switches_00225.jpg",
+      "relative_path": "push_button/pushbutton_switches_00225.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 0,
+      "is_correct": false
+    },
+    {
+      "index": 266,
+      "filename": "pushbutton_switches_00233.jpg",
+      "relative_path": "push_button/pushbutton_switches_00233.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 267,
+      "filename": "pushbutton_switches_00239.jpg",
+      "relative_path": "push_button/pushbutton_switches_00239.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 268,
+      "filename": "pushbutton_switches_00240.jpg",
+      "relative_path": "push_button/pushbutton_switches_00240.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 269,
+      "filename": "pushbutton_switches_00245.jpg",
+      "relative_path": "push_button/pushbutton_switches_00245.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 6,
+      "is_correct": false
+    },
+    {
+      "index": 270,
+      "filename": "pushbutton_switches_00260.jpg",
+      "relative_path": "push_button/pushbutton_switches_00260.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 271,
+      "filename": "pushbutton_switches_00280.jpg",
+      "relative_path": "push_button/pushbutton_switches_00280.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 0,
+      "is_correct": false
+    },
+    {
+      "index": 272,
+      "filename": "pushbutton_switches_00282.jpg",
+      "relative_path": "push_button/pushbutton_switches_00282.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 273,
+      "filename": "pushbutton_switches_00287.jpg",
+      "relative_path": "push_button/pushbutton_switches_00287.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 274,
+      "filename": "pushbutton_switches_00294.jpg",
+      "relative_path": "push_button/pushbutton_switches_00294.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 275,
+      "filename": "pushbutton_switches_00297.jpg",
+      "relative_path": "push_button/pushbutton_switches_00297.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 276,
+      "filename": "pushbutton_switches_00298.jpg",
+      "relative_path": "push_button/pushbutton_switches_00298.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 277,
+      "filename": "pushbutton_switches_00312.jpg",
+      "relative_path": "push_button/pushbutton_switches_00312.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 0,
+      "is_correct": false
+    },
+    {
+      "index": 278,
+      "filename": "pushbutton_switches_00319.jpg",
+      "relative_path": "push_button/pushbutton_switches_00319.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 4,
+      "is_correct": false
+    },
+    {
+      "index": 279,
+      "filename": "pushbutton_switches_00320.jpg",
+      "relative_path": "push_button/pushbutton_switches_00320.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 6,
+      "is_correct": false
+    },
+    {
+      "index": 280,
+      "filename": "pushbutton_switches_00327.jpg",
+      "relative_path": "push_button/pushbutton_switches_00327.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 281,
+      "filename": "pushbutton_switches_00343.jpg",
+      "relative_path": "push_button/pushbutton_switches_00343.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 282,
+      "filename": "pushbutton_switches_00358.jpg",
+      "relative_path": "push_button/pushbutton_switches_00358.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 6,
+      "is_correct": false
+    },
+    {
+      "index": 283,
+      "filename": "pushbutton_switches_00361.jpg",
+      "relative_path": "push_button/pushbutton_switches_00361.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 284,
+      "filename": "pushbutton_switches_00376.jpg",
+      "relative_path": "push_button/pushbutton_switches_00376.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 5,
+      "is_correct": false
+    },
+    {
+      "index": 285,
+      "filename": "pushbutton_switches_00391.jpg",
+      "relative_path": "push_button/pushbutton_switches_00391.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 286,
+      "filename": "pushbutton_switches_00400.jpg",
+      "relative_path": "push_button/pushbutton_switches_00400.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 287,
+      "filename": "pushbutton_switches_00403.jpg",
+      "relative_path": "push_button/pushbutton_switches_00403.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 3,
+      "is_correct": false
+    },
+    {
+      "index": 288,
+      "filename": "pushbutton_switches_00419.jpg",
+      "relative_path": "push_button/pushbutton_switches_00419.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 289,
+      "filename": "pushbutton_switches_00421.jpg",
+      "relative_path": "push_button/pushbutton_switches_00421.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 290,
+      "filename": "pushbutton_switches_00422.jpg",
+      "relative_path": "push_button/pushbutton_switches_00422.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 8,
+      "is_correct": false
+    },
+    {
+      "index": 291,
+      "filename": "pushbutton_switches_00433.jpg",
+      "relative_path": "push_button/pushbutton_switches_00433.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 3,
+      "is_correct": false
+    },
+    {
+      "index": 292,
+      "filename": "pushbutton_switches_00452.jpg",
+      "relative_path": "push_button/pushbutton_switches_00452.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 293,
+      "filename": "pushbutton_switches_00454.jpg",
+      "relative_path": "push_button/pushbutton_switches_00454.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 294,
+      "filename": "pushbutton_switches_00456.jpg",
+      "relative_path": "push_button/pushbutton_switches_00456.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 3,
+      "is_correct": false
+    },
+    {
+      "index": 295,
+      "filename": "pushbutton_switches_00463.jpg",
+      "relative_path": "push_button/pushbutton_switches_00463.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 8,
+      "is_correct": false
+    },
+    {
+      "index": 296,
+      "filename": "pushbutton_switches_00468.jpg",
+      "relative_path": "push_button/pushbutton_switches_00468.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 6,
+      "is_correct": false
+    },
+    {
+      "index": 297,
+      "filename": "pushbutton_switches_00470.jpg",
+      "relative_path": "push_button/pushbutton_switches_00470.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 298,
+      "filename": "pushbutton_switches_00473.jpg",
+      "relative_path": "push_button/pushbutton_switches_00473.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 299,
+      "filename": "pushbutton_switches_00474.jpg",
+      "relative_path": "push_button/pushbutton_switches_00474.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 300,
+      "filename": "pushbutton_switches_00477.jpg",
+      "relative_path": "push_button/pushbutton_switches_00477.jpg",
+      "class_name": "push_button",
+      "ground_truth_label": 7,
+      "predicted_label": 7,
+      "is_correct": true
+    },
+    {
+      "index": 301,
+      "filename": "through_hole_resistors_00013.jpg",
+      "relative_path": "resistor/through_hole_resistors_00013.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 302,
+      "filename": "through_hole_resistors_00016.jpg",
+      "relative_path": "resistor/through_hole_resistors_00016.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 303,
+      "filename": "through_hole_resistors_00017.jpg",
+      "relative_path": "resistor/through_hole_resistors_00017.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 304,
+      "filename": "through_hole_resistors_00035.jpg",
+      "relative_path": "resistor/through_hole_resistors_00035.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 305,
+      "filename": "through_hole_resistors_00038.jpg",
+      "relative_path": "resistor/through_hole_resistors_00038.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 1,
+      "is_correct": false
+    },
+    {
+      "index": 306,
+      "filename": "through_hole_resistors_00042.jpg",
+      "relative_path": "resistor/through_hole_resistors_00042.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 307,
+      "filename": "through_hole_resistors_00049.jpg",
+      "relative_path": "resistor/through_hole_resistors_00049.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 0,
+      "is_correct": false
+    },
+    {
+      "index": 308,
+      "filename": "through_hole_resistors_00064.jpg",
+      "relative_path": "resistor/through_hole_resistors_00064.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 309,
+      "filename": "through_hole_resistors_00067.jpg",
+      "relative_path": "resistor/through_hole_resistors_00067.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 310,
+      "filename": "through_hole_resistors_00070.jpg",
+      "relative_path": "resistor/through_hole_resistors_00070.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 311,
+      "filename": "through_hole_resistors_00072.jpg",
+      "relative_path": "resistor/through_hole_resistors_00072.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 312,
+      "filename": "through_hole_resistors_00081.jpg",
+      "relative_path": "resistor/through_hole_resistors_00081.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 313,
+      "filename": "through_hole_resistors_00086.jpg",
+      "relative_path": "resistor/through_hole_resistors_00086.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 314,
+      "filename": "through_hole_resistors_00096.jpg",
+      "relative_path": "resistor/through_hole_resistors_00096.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 315,
+      "filename": "through_hole_resistors_00145.jpg",
+      "relative_path": "resistor/through_hole_resistors_00145.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 316,
+      "filename": "through_hole_resistors_00185.jpg",
+      "relative_path": "resistor/through_hole_resistors_00185.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 317,
+      "filename": "through_hole_resistors_00213.jpg",
+      "relative_path": "resistor/through_hole_resistors_00213.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 7,
+      "is_correct": false
+    },
+    {
+      "index": 318,
+      "filename": "through_hole_resistors_00236.jpg",
+      "relative_path": "resistor/through_hole_resistors_00236.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 3,
+      "is_correct": false
+    },
+    {
+      "index": 319,
+      "filename": "through_hole_resistors_00275.jpg",
+      "relative_path": "resistor/through_hole_resistors_00275.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 320,
+      "filename": "through_hole_resistors_00297.jpg",
+      "relative_path": "resistor/through_hole_resistors_00297.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 3,
+      "is_correct": false
+    },
+    {
+      "index": 321,
+      "filename": "through_hole_resistors_00312.jpg",
+      "relative_path": "resistor/through_hole_resistors_00312.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 7,
+      "is_correct": false
+    },
+    {
+      "index": 322,
+      "filename": "through_hole_resistors_00313.jpg",
+      "relative_path": "resistor/through_hole_resistors_00313.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 323,
+      "filename": "through_hole_resistors_00336.jpg",
+      "relative_path": "resistor/through_hole_resistors_00336.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 324,
+      "filename": "through_hole_resistors_00340.jpg",
+      "relative_path": "resistor/through_hole_resistors_00340.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 325,
+      "filename": "through_hole_resistors_00354.jpg",
+      "relative_path": "resistor/through_hole_resistors_00354.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 326,
+      "filename": "through_hole_resistors_00357.jpg",
+      "relative_path": "resistor/through_hole_resistors_00357.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 327,
+      "filename": "through_hole_resistors_00371.jpg",
+      "relative_path": "resistor/through_hole_resistors_00371.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 328,
+      "filename": "through_hole_resistors_00380.jpg",
+      "relative_path": "resistor/through_hole_resistors_00380.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 329,
+      "filename": "through_hole_resistors_00382.jpg",
+      "relative_path": "resistor/through_hole_resistors_00382.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 330,
+      "filename": "through_hole_resistors_00384.jpg",
+      "relative_path": "resistor/through_hole_resistors_00384.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 331,
+      "filename": "through_hole_resistors_00385.jpg",
+      "relative_path": "resistor/through_hole_resistors_00385.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 332,
+      "filename": "through_hole_resistors_00391.jpg",
+      "relative_path": "resistor/through_hole_resistors_00391.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 333,
+      "filename": "through_hole_resistors_00393.jpg",
+      "relative_path": "resistor/through_hole_resistors_00393.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 334,
+      "filename": "through_hole_resistors_00398.jpg",
+      "relative_path": "resistor/through_hole_resistors_00398.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 335,
+      "filename": "through_hole_resistors_00424.jpg",
+      "relative_path": "resistor/through_hole_resistors_00424.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 336,
+      "filename": "through_hole_resistors_00426.jpg",
+      "relative_path": "resistor/through_hole_resistors_00426.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 337,
+      "filename": "through_hole_resistors_00428.jpg",
+      "relative_path": "resistor/through_hole_resistors_00428.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 338,
+      "filename": "through_hole_resistors_00429.jpg",
+      "relative_path": "resistor/through_hole_resistors_00429.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 339,
+      "filename": "through_hole_resistors_00449.jpg",
+      "relative_path": "resistor/through_hole_resistors_00449.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 340,
+      "filename": "through_hole_resistors_00453.jpg",
+      "relative_path": "resistor/through_hole_resistors_00453.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 341,
+      "filename": "through_hole_resistors_00464.jpg",
+      "relative_path": "resistor/through_hole_resistors_00464.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 342,
+      "filename": "through_hole_resistors_00470.jpg",
+      "relative_path": "resistor/through_hole_resistors_00470.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 343,
+      "filename": "through_hole_resistors_00486.jpg",
+      "relative_path": "resistor/through_hole_resistors_00486.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 344,
+      "filename": "through_hole_resistors_00490.jpg",
+      "relative_path": "resistor/through_hole_resistors_00490.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    },
+    {
+      "index": 345,
+      "filename": "through_hole_resistors_00495.jpg",
+      "relative_path": "resistor/through_hole_resistors_00495.jpg",
+      "class_name": "resistor",
+      "ground_truth_label": 8,
+      "predicted_label": 8,
+      "is_correct": true
+    }
+  ]
+}

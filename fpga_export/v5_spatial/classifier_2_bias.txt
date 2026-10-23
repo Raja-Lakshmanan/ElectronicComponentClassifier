@@ -1,0 +1,20 @@
+# Parameter : classifier.2.bias
+# Layer     : Linear(64->10) bias
+# Shape     : [10]
+# Dtype     : float32
+# Elements  : 10
+# Min       : -0.20720899
+# Max       : 0.08329488
+# Mean      : -0.04999866
+#
+# Flat values (row-major / C-order):
+-0.13428746
+-0.09063790
+0.08329488
+0.03019780
+-0.05368392
+0.02581536
+-0.07333570
+-0.20720899
+-0.04472370
+-0.03541697

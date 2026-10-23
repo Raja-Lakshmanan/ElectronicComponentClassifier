@@ -1,0 +1,114 @@
+{
+  "description": "Exported INT8 weights for V5-Spatial (ComponentCNNSpatial)",
+  "quantization_scheme": "Symmetric per-tensor to signed INT8 [-128, 127]",
+  "rounding_rule": "Round-to-nearest-even (np.round / IEEE 754)",
+  "formula": "w_int8 = clip(round(w_fp32 / scale), -128, 127)",
+  "weights": {
+    "conv1": {
+      "display_name": "Conv Block 1 Weight",
+      "param_key": "features.0.weight",
+      "shape": [
+        16,
+        3,
+        3,
+        3
+      ],
+      "elements": 432,
+      "dtype": "int8",
+      "scale": 0.003316483394367488,
+      "max_abs_fp32": 0.421193391084671,
+      "int8_range": [
+        -127,
+        94
+      ],
+      "npy_file": "conv1_weight_int8.npy",
+      "npy_sha256": "3387f9b2da0b0d6c9516fae1c1646dcf81bca9767ad1e0814e5755a6349c5804",
+      "txt_file": "conv1_weight_int8.txt",
+      "txt_sha256": "ce8161b7aa71fd2a7e70798bd2e66b17aa530d9dda6b453b25c5297c106c8c0c"
+    },
+    "conv2": {
+      "display_name": "Conv Block 2 Weight",
+      "param_key": "features.3.weight",
+      "shape": [
+        32,
+        16,
+        3,
+        3
+      ],
+      "elements": 4608,
+      "dtype": "int8",
+      "scale": 0.005413434636874462,
+      "max_abs_fp32": 0.6875061988830566,
+      "int8_range": [
+        -85,
+        127
+      ],
+      "npy_file": "conv2_weight_int8.npy",
+      "npy_sha256": "a1831a5360699073c738f03dcfe8558263fba5d6eeec4f6f7713c0956da93346",
+      "txt_file": "conv2_weight_int8.txt",
+      "txt_sha256": "8c65485f497b68c81f3180296faa43038300da1479f4043a07b001aa30098897"
+    },
+    "conv3": {
+      "display_name": "Conv Block 3 Weight",
+      "param_key": "features.6.weight",
+      "shape": [
+        64,
+        32,
+        3,
+        3
+      ],
+      "elements": 18432,
+      "dtype": "int8",
+      "scale": 0.004656787932388426,
+      "max_abs_fp32": 0.5914120674133301,
+      "int8_range": [
+        -127,
+        101
+      ],
+      "npy_file": "conv3_weight_int8.npy",
+      "npy_sha256": "6d6baa91aff21e359e63363e1208b55d263f0e5f2293e6afe9662f6633a42a62",
+      "txt_file": "conv3_weight_int8.txt",
+      "txt_sha256": "fd034101748902bb648e0377ad91b9b6b6741d8df576dc612fa8aedad96acb5a"
+    },
+    "fc1": {
+      "display_name": "FC Hidden (FC1) Weight",
+      "param_key": "classifier.0.weight",
+      "shape": [
+        64,
+        256
+      ],
+      "elements": 16384,
+      "dtype": "int8",
+      "scale": 0.0037154247910957637,
+      "max_abs_fp32": 0.471858948469162,
+      "int8_range": [
+        -127,
+        113
+      ],
+      "npy_file": "fc1_weight_int8.npy",
+      "npy_sha256": "4c904518f6112b12b0467627f78476ca71161428f5b4b583df5a699de9f5dc1e",
+      "txt_file": "fc1_weight_int8.txt",
+      "txt_sha256": "8f30d63c8944721199665858fabf11b502731be68597b03268a760517838d1a2"
+    },
+    "fc2": {
+      "display_name": "FC Output (FC2) Weight",
+      "param_key": "classifier.2.weight",
+      "shape": [
+        10,
+        64
+      ],
+      "elements": 640,
+      "dtype": "int8",
+      "scale": 0.005109675287261722,
+      "max_abs_fp32": 0.6489287614822388,
+      "int8_range": [
+        -127,
+        75
+      ],
+      "npy_file": "fc2_weight_int8.npy",
+      "npy_sha256": "26a1dcfee4f5e5601724b151dc665917886bc3265dbb585c826008a8d16a5de1",
+      "txt_file": "fc2_weight_int8.txt",
+      "txt_sha256": "6d563ead3d49010cda5f92656c8e33b29b050c89aa9d2be04125e239f608805e"
+    }
+  }
+}

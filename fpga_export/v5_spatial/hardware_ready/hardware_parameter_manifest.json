@@ -1,0 +1,525 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "V5-Spatial Hardware Parameter Manifest for PYNQ-Z2 FPGA",
+  "version": "1.0.0",
+  "created_at": "2026-10-22T23:55:00Z",
+  "project": "ElectronicComponentClassifier",
+  "target_device": {
+    "board": "PYNQ-Z2",
+    "fpga_part": "xc7z020clg400-1",
+    "soc_family": "Xilinx Zynq-7000 SoC",
+    "logic_cells": 85000,
+    "dsp_slices": 220,
+    "block_ram_kb": 612.5
+  },
+  "model_metadata": {
+    "architecture": "ComponentCNNSpatial (V5-Spatial)",
+    "source_definition": "model_v5_spatial.py",
+    "checkpoint": "checkpoints/v5_spatial_best_model.pth",
+    "best_epoch": 49,
+    "total_trainable_parameters": 40682,
+    "input_dimensions": {
+      "channels": 3,
+      "height": 64,
+      "width": 64,
+      "color_order": "RGB",
+      "pixel_dtype": "uint8",
+      "pixel_range": [0, 255]
+    },
+    "classification_policy": {
+      "output_raw_logits": 10,
+      "transistor_mask_index": 9,
+      "permitted_classes_count": 9,
+      "permitted_classes": [
+        "capacitor",
+        "diode",
+        "fuse",
+        "inductor",
+        "integrated_circuit",
+        "led",
+        "potentiometer",
+        "push_button",
+        "resistor"
+      ],
+      "inference_rule": "Slice logits[:, 0:9], argmax over indices 0..8. Transistor index 9 is strictly excluded from output predictions."
+    }
+  },
+  "validation_performance": {
+    "test_dataset": "cleaned_dataset/test (346 images)",
+    "fp32_baseline": {
+      "accuracy": 68.79,
+      "macro_f1": 0.6646,
+      "correct": 238,
+      "total": 346
+    },
+    "hybrid_fixed_point_simulation": {
+      "accuracy": 68.79,
+      "macro_f1": 0.6607,
+      "correct": 238,
+      "total": 346,
+      "prediction_agreement_vs_fp32_pct": 95.95
+    },
+    "integer_only_reference": {
+      "accuracy": 68.79,
+      "macro_f1": 0.6607,
+      "correct": 238,
+      "total": 346,
+      "prediction_agreement_vs_hybrid_fxp_pct": 100.0,
+      "prediction_agreement_vs_fp32_pct": 95.95,
+      "int32_overflows": 0,
+      "unit_tests_passed": "5/5"
+    }
+  },
+  "memory_footprint_summary": {
+    "input_lut_bytes": 256,
+    "quantized_weights_bytes": 40496,
+    "quantized_biases_bytes": 744,
+    "requant_parameters_bytes": 48,
+    "total_parameter_bytes": 41544,
+    "total_parameter_kb": 40.57,
+    "pynq_z2_bram_capacity_kb": 612.5,
+    "bram_utilization_pct": 6.62,
+    "storage_verdict": "Entire parameter bundle fits with extreme margin (<7% of on-chip BRAM), enabling 100% on-chip storage with zero external DDR DRAM stalls during inference."
+  },
+  "parameters": {
+    "input_lut": {
+      "name": "Input Pixel Normalization & Quantization LUT",
+      "description": "Precomputed lookup table mapping raw camera uint8 pixels P in [0, 255] to signed INT8 activations via x = 2*P/255 - 1, round-to-nearest-even, scale = 0.00787402.",
+      "shape": [256],
+      "dtype": "int8",
+      "scale": 0.00787402,
+      "range": [-127, 127],
+      "files": {
+        "npy": {
+          "path": "fpga_export/v5_spatial/integer_params/input_lut_int8.npy",
+          "size_bytes": 384,
+          "sha256": "afd7837c6970a8e6f029a64aeb92d9f725a1b34f0ddd405b5ba068dce102aa45"
+        },
+        "txt": {
+          "path": "fpga_export/v5_spatial/integer_params/input_lut_int8.txt",
+          "size_bytes": 14504,
+          "sha256": "4e3544ad52674777cc7b50489d8e10c90288d9b8cd32627d445d5a08c62c8208"
+        }
+      }
+    },
+    "conv1": {
+      "layer_name": "Conv Block 1 (features.0)",
+      "type": "Conv2d",
+      "kernel_size": [3, 3],
+      "stride": 1,
+      "padding": 1,
+      "input_shape": [3, 64, 64],
+      "output_shape_pre_pool": [16, 64, 64],
+      "output_shape_post_pool": [16, 32, 32],
+      "input_activation_scale": 0.00787402,
+      "weight_scale": 0.003316483394367488,
+      "bias_scale": 2.611395015383921e-05,
+      "output_activation_scale": 0.0271169,
+      "accumulator_bounds": {
+        "theoretical_worst_case_mac": 442368,
+        "max_bias_addition": 19140,
+        "theoretical_max_sum": 461508,
+        "accumulator_bits_needed": 20,
+        "hardware_accumulator_type": "int32_t / ap_int<32>",
+        "overflow_guarantee": "ZERO overflow mathematically guaranteed"
+      },
+      "requantization": {
+        "scaling_ratio": 0.0009630177703541885,
+        "primary_31bit": {
+          "multiplier_M": 2117698473,
+          "shift_S": 41,
+          "max_product": 962754432890679,
+          "product_bits_needed": 51,
+          "fits_in_int64": true
+        },
+        "compact_16bit": {
+          "multiplier_M": 64627,
+          "shift_S": 26,
+          "max_product": 29380920621,
+          "product_bits_needed": 36,
+          "fits_in_int64": true
+        }
+      },
+      "weights": {
+        "param_key": "features.0.weight",
+        "shape": [16, 3, 3, 3],
+        "elements": 432,
+        "dtype": "int8",
+        "range": [-127, 94],
+        "files": {
+          "npy": {
+            "path": "fpga_export/v5_spatial/integer_params/conv1_weight_int8.npy",
+            "size_bytes": 560,
+            "sha256": "3387f9b2da0b0d6c9516fae1c1646dcf81bca9767ad1e0814e5755a6349c5804"
+          },
+          "txt": {
+            "path": "fpga_export/v5_spatial/integer_params/conv1_weight_int8.txt",
+            "size_bytes": 6270,
+            "sha256": "ce8161b7aa71fd2a7e70798bd2e66b17aa530d9dda6b453b25c5297c106c8c0c"
+          }
+        }
+      },
+      "biases": {
+        "param_key": "features.0.bias",
+        "shape": [16],
+        "elements": 16,
+        "dtype": "int32",
+        "range": [-5965, 19140],
+        "files": {
+          "npy": {
+            "path": "fpga_export/v5_spatial/integer_params/conv1_bias_int32.npy",
+            "size_bytes": 192,
+            "sha256": "cc7fc908a25e43401888124a8962790934db3713d1df401577d86cf21133e5ae"
+          },
+          "txt": {
+            "path": "fpga_export/v5_spatial/integer_params/conv1_bias_int32.txt",
+            "size_bytes": 1041,
+            "sha256": "8f92c4ce8c81ab71f748f887488fb97c691832c23676670c6ad0c8450a99f79f"
+          }
+        }
+      }
+    },
+    "conv2": {
+      "layer_name": "Conv Block 2 (features.3)",
+      "type": "Conv2d",
+      "kernel_size": [3, 3],
+      "stride": 1,
+      "padding": 1,
+      "input_shape": [16, 32, 32],
+      "output_shape_pre_pool": [32, 32, 32],
+      "output_shape_post_pool": [32, 16, 16],
+      "input_activation_scale": 0.0271169,
+      "weight_scale": 0.005413434636874462,
+      "bias_scale": 0.00014679555171705646,
+      "output_activation_scale": 0.14521016,
+      "accumulator_bounds": {
+        "theoretical_worst_case_mac": 2359296,
+        "max_bias_addition": 1309,
+        "theoretical_max_sum": 2360605,
+        "accumulator_bits_needed": 23,
+        "hardware_accumulator_type": "int32_t / ap_int<32>",
+        "overflow_guarantee": "ZERO overflow mathematically guaranteed"
+      },
+      "requantization": {
+        "scaling_ratio": 0.0010109180081108724,
+        "primary_31bit": {
+          "multiplier_M": 1111516105,
+          "shift_S": 40,
+          "max_product": 2583035603667925,
+          "product_bits_needed": 53,
+          "fits_in_int64": true
+        },
+        "compact_16bit": {
+          "multiplier_M": 33921,
+          "shift_S": 25,
+          "max_product": 78828503085,
+          "product_bits_needed": 38,
+          "fits_in_int64": true
+        }
+      },
+      "weights": {
+        "param_key": "features.3.weight",
+        "shape": [32, 16, 3, 3],
+        "elements": 4608,
+        "dtype": "int8",
+        "range": [-85, 127],
+        "files": {
+          "npy": {
+            "path": "fpga_export/v5_spatial/integer_params/conv2_weight_int8.npy",
+            "size_bytes": 4736,
+            "sha256": "a1831a5360699073c738f03dcfe8558263fba5d6eeec4f6f7713c0956da93346"
+          },
+          "txt": {
+            "path": "fpga_export/v5_spatial/integer_params/conv2_weight_int8.txt",
+            "size_bytes": 64736,
+            "sha256": "8c65485f497b68c81f3180296faa43038300da1479f4043a07b001aa30098897"
+          }
+        }
+      },
+      "biases": {
+        "param_key": "features.3.bias",
+        "shape": [32],
+        "elements": 32,
+        "dtype": "int32",
+        "range": [-779, 1309],
+        "files": {
+          "npy": {
+            "path": "fpga_export/v5_spatial/integer_params/conv2_bias_int32.npy",
+            "size_bytes": 256,
+            "sha256": "aad6a1152affb48f81e8e4b3c228a1718682390c1136a8fb79ca9a90bb6515dc"
+          },
+          "txt": {
+            "path": "fpga_export/v5_spatial/integer_params/conv2_bias_int32.txt",
+            "size_bytes": 1823,
+            "sha256": "1a2b47996609a8f468d4868ab43a625c5c5d1d8afbe6e2dd2b6028b9a51a228a"
+          }
+        }
+      }
+    },
+    "conv3": {
+      "layer_name": "Conv Block 3 (features.6)",
+      "type": "Conv2d",
+      "kernel_size": [3, 3],
+      "stride": 1,
+      "padding": 1,
+      "input_shape": [32, 16, 16],
+      "output_shape_pre_pool": [64, 16, 16],
+      "output_shape_post_pool": [64, 8, 8],
+      "input_activation_scale": 0.14521016,
+      "weight_scale": 0.004656787932388426,
+      "bias_scale": 0.0006762128795052959,
+      "output_activation_scale": 0.50742737,
+      "accumulator_bounds": {
+        "theoretical_worst_case_mac": 4718592,
+        "max_bias_addition": 338,
+        "theoretical_max_sum": 4718930,
+        "accumulator_bits_needed": 24,
+        "hardware_accumulator_type": "int32_t / ap_int<32>",
+        "overflow_guarantee": "ZERO overflow mathematically guaranteed"
+      },
+      "requantization": {
+        "scaling_ratio": 0.0013326299697791085,
+        "primary_31bit": {
+          "multiplier_M": 1465242147,
+          "shift_S": 40,
+          "max_product": 6806767741467030,
+          "product_bits_needed": 54,
+          "fits_in_int64": true
+        },
+        "compact_16bit": {
+          "multiplier_M": 44716,
+          "shift_S": 25,
+          "max_product": 207727730840,
+          "product_bits_needed": 39,
+          "fits_in_int64": true
+        }
+      },
+      "weights": {
+        "param_key": "features.6.weight",
+        "shape": [64, 32, 3, 3],
+        "elements": 18432,
+        "dtype": "int8",
+        "range": [-127, 101],
+        "files": {
+          "npy": {
+            "path": "fpga_export/v5_spatial/integer_params/conv3_weight_int8.npy",
+            "size_bytes": 18560,
+            "sha256": "6d6baa91aff21e359e63363e1208b55d263f0e5f2293e6afe9662f6633a42a62"
+          },
+          "txt": {
+            "path": "fpga_export/v5_spatial/integer_params/conv3_weight_int8.txt",
+            "size_bytes": 258274,
+            "sha256": "fd034101748902bb648e0377ad91b9b6b6741d8df576dc612fa8aedad96acb5a"
+          }
+        }
+      },
+      "biases": {
+        "param_key": "features.6.bias",
+        "shape": [64],
+        "elements": 64,
+        "dtype": "int32",
+        "range": [-220, 338],
+        "files": {
+          "npy": {
+            "path": "fpga_export/v5_spatial/integer_params/conv3_bias_int32.npy",
+            "size_bytes": 384,
+            "sha256": "4d94936d00a61f890047527f5aaaba676fc91365edf20e867bdd5d9e629f81dc"
+          },
+          "txt": {
+            "path": "fpga_export/v5_spatial/integer_params/conv3_bias_int32.txt",
+            "size_bytes": 3390,
+            "sha256": "97558daf46984752414541e7e8611d1c2cc89f0cef6b787c2e5a76794fb3dc82"
+          }
+        }
+      }
+    },
+    "spatial_pool": {
+      "layer_name": "Spatial Adaptive Average Pool (features.8)",
+      "type": "AdaptiveAvgPool2d",
+      "input_shape": [64, 8, 8],
+      "output_shape": [64, 2, 2],
+      "region_size": [4, 4],
+      "elements_per_region": 16,
+      "input_activation_scale": 0.50742737,
+      "output_activation_scale": 0.32026483,
+      "scaling_ratio": 1.584399285093557,
+      "sum_range": [0, 2032],
+      "division_and_rounding": {
+        "divisor": 16,
+        "round_even_formula": "(rem == 8) ? (div + (div & 1)) : ((sum + 8) >> 4)",
+        "half_up_formula": "(sum + 8) >> 4",
+        "audit_note": "Both modes verified. round_even matches PyTorch floating-point mean() with 100% agreement. In hardware, round_even adds a single 4-bit equality check (rem == 4'd8) and a 1-bit increment, consuming negligible FPGA LUTs."
+      },
+      "requantization": {
+        "multiplier_M": 103835,
+        "shift_S": 16,
+        "max_err_vs_float_lsb": 0,
+        "exact_match_pct": 100.0
+      }
+    },
+    "fc1": {
+      "layer_name": "Fully Connected 1 (classifier.0)",
+      "type": "Linear",
+      "input_shape": [256],
+      "output_shape": [64],
+      "input_activation_scale": 0.32026483,
+      "weight_scale": 0.0037154247910957637,
+      "bias_scale": 0.001189919794017772,
+      "output_activation_scale": 0.21360116,
+      "accumulator_bounds": {
+        "theoretical_worst_case_mac": 4194304,
+        "max_bias_addition": 125,
+        "theoretical_max_sum": 4194429,
+        "accumulator_bits_needed": 24,
+        "hardware_accumulator_type": "int32_t / ap_int<32>",
+        "overflow_guarantee": "ZERO overflow mathematically guaranteed"
+      },
+      "requantization": {
+        "scaling_ratio": 0.005570755744482241,
+        "primary_31bit": {
+          "multiplier_M": 1531277679,
+          "shift_S": 38,
+          "max_product": 6322873696965171,
+          "product_bits_needed": 54,
+          "fits_in_int64": true
+        },
+        "compact_16bit": {
+          "multiplier_M": 46731,
+          "shift_S": 23,
+          "max_product": 192959261919,
+          "product_bits_needed": 39,
+          "fits_in_int64": true
+        }
+      },
+      "weights": {
+        "param_key": "classifier.0.weight",
+        "shape": [64, 256],
+        "elements": 16384,
+        "dtype": "int8",
+        "range": [-127, 113],
+        "files": {
+          "npy": {
+            "path": "fpga_export/v5_spatial/integer_params/fc1_weight_int8.npy",
+            "size_bytes": 16512,
+            "sha256": "4c904518f6112b12b0467627f78476ca71161428f5b4b583df5a699de9f5dc1e"
+          },
+          "txt": {
+            "path": "fpga_export/v5_spatial/integer_params/fc1_weight_int8.txt",
+            "size_bytes": 229602,
+            "sha256": "8f30d63c8944721199665858fabf11b502731be68597b03268a760517838d1a2"
+          }
+        }
+      },
+      "biases": {
+        "param_key": "classifier.0.bias",
+        "shape": [64],
+        "elements": 64,
+        "dtype": "int32",
+        "range": [-86, 125],
+        "files": {
+          "npy": {
+            "path": "fpga_export/v5_spatial/integer_params/fc1_bias_int32.npy",
+            "size_bytes": 384,
+            "sha256": "6ee422259be4e4729415d43ad7d899fcd7d2f9da7901bbafd1e324597b4212d3"
+          },
+          "txt": {
+            "path": "fpga_export/v5_spatial/integer_params/fc1_bias_int32.txt",
+            "size_bytes": 3394,
+            "sha256": "e1b16061a094db0b6645d1950ccd2b26386053fea84b578195a018b5ab31b2de"
+          }
+        }
+      }
+    },
+    "fc2": {
+      "layer_name": "Fully Connected Output (classifier.2)",
+      "type": "Linear",
+      "input_shape": [64],
+      "output_shape": [10],
+      "input_activation_scale": 0.21360116,
+      "weight_scale": 0.005109675287261722,
+      "bias_scale": 0.0010914325685824372,
+      "accumulator_bounds": {
+        "theoretical_worst_case_mac": 1048576,
+        "max_bias_addition": 190,
+        "theoretical_max_sum": 1048766,
+        "accumulator_bits_needed": 22,
+        "hardware_accumulator_type": "int32_t / ap_int<32>",
+        "overflow_guarantee": "ZERO overflow mathematically guaranteed"
+      },
+      "requantization": {
+        "scaling_ratio": 1.0,
+        "multiplier_M": 1,
+        "shift_S": 0,
+        "status": "Direct integer accumulator (acc + bias_int32) used for classification argmax without scaling loss."
+      },
+      "weights": {
+        "param_key": "classifier.2.weight",
+        "shape": [10, 64],
+        "elements": 640,
+        "dtype": "int8",
+        "range": [-127, 75],
+        "files": {
+          "npy": {
+            "path": "fpga_export/v5_spatial/integer_params/fc2_weight_int8.npy",
+            "size_bytes": 768,
+            "sha256": "26a1dcfee4f5e5601724b151dc665917886bc3265dbb585c826008a8d16a5de1"
+          },
+          "txt": {
+            "path": "fpga_export/v5_spatial/integer_params/fc2_weight_int8.txt",
+            "size_bytes": 9182,
+            "sha256": "6d563ead3d49010cda5f92656c8e33b29b050c89aa9d2be04125e239f608805e"
+          }
+        }
+      },
+      "biases": {
+        "param_key": "classifier.2.bias",
+        "shape": [10],
+        "elements": 10,
+        "dtype": "int32",
+        "range": [-190, 76],
+        "files": {
+          "npy": {
+            "path": "fpga_export/v5_spatial/integer_params/fc2_bias_int32.npy",
+            "size_bytes": 168,
+            "sha256": "3c4404555f2b8976f069ab6aa321f244c673c0ef58e3c09653b41ddfe4864cd8"
+          },
+          "txt": {
+            "path": "fpga_export/v5_spatial/integer_params/fc2_bias_int32.txt",
+            "size_bytes": 748,
+            "sha256": "11991383d3016fe2af5eb71f02a9468d01a62ae82805bb001dcc1be4fb7cf2e9"
+          }
+        }
+      }
+    }
+  },
+  "requantization_arrays": {
+    "primary_31bit": {
+      "multipliers_npy": {
+        "path": "fpga_export/v5_spatial/integer_params/requant_multipliers_m31.npy",
+        "size_bytes": 168,
+        "sha256": "936c0d576be3728c59951ea9667cef642649ff1f7024a7e4ca7fd887b02547cf"
+      },
+      "shifts_npy": {
+        "path": "fpga_export/v5_spatial/integer_params/requant_shifts_s31.npy",
+        "size_bytes": 148,
+        "sha256": "6965a0c0cf44e0af0cf07e43e7b7ed46ced0da54b69c1f3400794651a7d101ac"
+      }
+    },
+    "compact_16bit": {
+      "multipliers_npy": {
+        "path": "fpga_export/v5_spatial/integer_params/requant_multipliers_m16.npy",
+        "size_bytes": 148,
+        "sha256": "f0053a201dfbefb61f65b6b7294449665ce26d0dca692875874fd468c050bb95"
+      },
+      "shifts_npy": {
+        "path": "fpga_export/v5_spatial/integer_params/requant_shifts_s16.npy",
+        "size_bytes": 148,
+        "sha256": "35beb4fb74b5d52463d3460ee5fdf25fe5bbb17a72070d0334d2f33dd2059350"
+      }
+    }
+  },
+  "readiness_verdict": {
+    "status": "READY_FOR_PHASE_3_HLS",
+    "summary": "All parameter files are exported, cross-verified with 100% agreement against the hybrid fixed-point golden reference, and proved overflow-free. Parameter bundle fits completely within 6.6% of PYNQ-Z2 BRAM capacity."
+  }
+}

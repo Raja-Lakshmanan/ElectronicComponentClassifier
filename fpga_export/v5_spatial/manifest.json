@@ -1,0 +1,219 @@
+{
+  "model": {
+    "architecture": "ComponentCNNSpatial",
+    "spatial_pool_size": [
+      2,
+      2
+    ],
+    "num_classes": 10,
+    "total_parameters": 40682
+  },
+  "checkpoint": {
+    "filename": "v5_spatial_best_model.pth",
+    "best_epoch": 49,
+    "val_accuracy": 67.54385964912281,
+    "val_macro_f1": 0.6307657532543189
+  },
+  "input": {
+    "shape": [
+      1,
+      3,
+      64,
+      64
+    ],
+    "channels": "RGB",
+    "height": 64,
+    "width": 64,
+    "normalization": {
+      "mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "pixel_range_after_normalize": [
+        -1.0,
+        1.0
+      ]
+    }
+  },
+  "layers": [
+    {
+      "param_key": "features.0.weight",
+      "layer": "Conv Block 1",
+      "description": "Conv2d(3->16, k=3, p=1) weight",
+      "shape": [
+        16,
+        3,
+        3,
+        3
+      ],
+      "dtype": "float32",
+      "elements": 432,
+      "bytes_float32": 1728,
+      "npy_file": "features_0_weight.npy",
+      "txt_file": "features_0_weight.txt"
+    },
+    {
+      "param_key": "features.0.bias",
+      "layer": "Conv Block 1",
+      "description": "Conv2d(3->16, k=3, p=1) bias",
+      "shape": [
+        16
+      ],
+      "dtype": "float32",
+      "elements": 16,
+      "bytes_float32": 64,
+      "npy_file": "features_0_bias.npy",
+      "txt_file": "features_0_bias.txt"
+    },
+    {
+      "param_key": "features.3.weight",
+      "layer": "Conv Block 2",
+      "description": "Conv2d(16->32, k=3, p=1) weight",
+      "shape": [
+        32,
+        16,
+        3,
+        3
+      ],
+      "dtype": "float32",
+      "elements": 4608,
+      "bytes_float32": 18432,
+      "npy_file": "features_3_weight.npy",
+      "txt_file": "features_3_weight.txt"
+    },
+    {
+      "param_key": "features.3.bias",
+      "layer": "Conv Block 2",
+      "description": "Conv2d(16->32, k=3, p=1) bias",
+      "shape": [
+        32
+      ],
+      "dtype": "float32",
+      "elements": 32,
+      "bytes_float32": 128,
+      "npy_file": "features_3_bias.npy",
+      "txt_file": "features_3_bias.txt"
+    },
+    {
+      "param_key": "features.6.weight",
+      "layer": "Conv Block 3",
+      "description": "Conv2d(32->64, k=3, p=1) weight",
+      "shape": [
+        64,
+        32,
+        3,
+        3
+      ],
+      "dtype": "float32",
+      "elements": 18432,
+      "bytes_float32": 73728,
+      "npy_file": "features_6_weight.npy",
+      "txt_file": "features_6_weight.txt"
+    },
+    {
+      "param_key": "features.6.bias",
+      "layer": "Conv Block 3",
+      "description": "Conv2d(32->64, k=3, p=1) bias",
+      "shape": [
+        64
+      ],
+      "dtype": "float32",
+      "elements": 64,
+      "bytes_float32": 256,
+      "npy_file": "features_6_bias.npy",
+      "txt_file": "features_6_bias.txt"
+    },
+    {
+      "param_key": "classifier.0.weight",
+      "layer": "FC Hidden",
+      "description": "Linear(256->64) weight",
+      "shape": [
+        64,
+        256
+      ],
+      "dtype": "float32",
+      "elements": 16384,
+      "bytes_float32": 65536,
+      "npy_file": "classifier_0_weight.npy",
+      "txt_file": "classifier_0_weight.txt"
+    },
+    {
+      "param_key": "classifier.0.bias",
+      "layer": "FC Hidden",
+      "description": "Linear(256->64) bias",
+      "shape": [
+        64
+      ],
+      "dtype": "float32",
+      "elements": 64,
+      "bytes_float32": 256,
+      "npy_file": "classifier_0_bias.npy",
+      "txt_file": "classifier_0_bias.txt"
+    },
+    {
+      "param_key": "classifier.2.weight",
+      "layer": "FC Output",
+      "description": "Linear(64->10) weight",
+      "shape": [
+        10,
+        64
+      ],
+      "dtype": "float32",
+      "elements": 640,
+      "bytes_float32": 2560,
+      "npy_file": "classifier_2_weight.npy",
+      "txt_file": "classifier_2_weight.txt"
+    },
+    {
+      "param_key": "classifier.2.bias",
+      "layer": "FC Output",
+      "description": "Linear(64->10) bias",
+      "shape": [
+        10
+      ],
+      "dtype": "float32",
+      "elements": 10,
+      "bytes_float32": 40,
+      "npy_file": "classifier_2_bias.npy",
+      "txt_file": "classifier_2_bias.txt"
+    }
+  ],
+  "class_mapping": {
+    "0": "capacitor",
+    "1": "diode",
+    "2": "fuse",
+    "3": "inductor",
+    "4": "integrated_circuit",
+    "5": "led",
+    "6": "potentiometer",
+    "7": "push_button",
+    "8": "resistor",
+    "9": "transistor"
+  },
+  "deployment_notes": {
+    "transistor_index": 9,
+    "transistor_handling": "The transistor output at index 9 is masked to negative infinity at inference time during application-level prediction. It is NOT removed from the trained network architecture. All 10 output logits remain structurally present in the exported weights.",
+    "permitted_classes": [
+      "capacitor",
+      "diode",
+      "fuse",
+      "inductor",
+      "integrated_circuit",
+      "led",
+      "potentiometer",
+      "push_button",
+      "resistor"
+    ]
+  },
+  "export": {
+    "format": "float32 NumPy (.npy) + human-readable (.txt)",
+    "quantization": "none (raw float32, pre-quantization export)",
+    "export_script": "export_v5_weights.py"
+  }
+}

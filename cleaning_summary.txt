@@ -1,0 +1,357 @@
+========================================================================
+  Electronic Component Classifier – Cleaning Summary
+========================================================================
+
+SOURCE      : prepared_dataset/
+OUTPUT      : cleaned_dataset/
+HASH METHOD : SHA-256
+
+Duplicate group categories
+------------------------------------------------------------------------
+  SAME_CLASS   (intra-split, same label, kept one copy) : 25
+  CROSS_SPLIT  (same image in multiple splits, excluded) : 21
+  CROSS_CLASS  (different labels, excluded for review)   : 4
+  AMBIGUOUS    (excluded for safety)                     : 0
+
+------------------------------------------------------------------------
+  Split: TRAIN
+------------------------------------------------------------------------
+  Class                     Before   After  Removed
+  -------------------------------------------------
+  capacitor                    226     223        3
+  diode                        106      85       21
+  fuse                         112     110        2
+  inductor                     152     149        3
+  integrated_circuit            60      46       14
+  led                          233     221       12
+  potentiometer                207     201        6
+  push_button                  318     317        1
+  resistor                     210     210        0
+  transistor                    49      42        7
+  -------------------------------------------------
+  TOTAL                       1673    1604       69
+
+------------------------------------------------------------------------
+  Split: VAL
+------------------------------------------------------------------------
+  Class                     Before   After  Removed
+  -------------------------------------------------
+  capacitor                     48      47        1
+  diode                         22      17        5
+  fuse                          24      24        0
+  inductor                      32      31        1
+  integrated_circuit            12      10        2
+  led                           49      49        0
+  potentiometer                 44      42        2
+  push_button                   68      68        0
+  resistor                      45      45        0
+  transistor                    10       9        1
+  -------------------------------------------------
+  TOTAL                        354     342       12
+
+------------------------------------------------------------------------
+  Split: TEST
+------------------------------------------------------------------------
+  Class                     Before   After  Removed
+  -------------------------------------------------
+  capacitor                     49      48        1
+  diode                         24      21        3
+  fuse                          25      25        0
+  inductor                      34      34        0
+  integrated_circuit            14      12        2
+  led                           51      49        2
+  potentiometer                 45      43        2
+  push_button                   69      69        0
+  resistor                      45      45        0
+  transistor                    12      10        2
+  -------------------------------------------------
+  TOTAL                        368     356       12
+
+========================================================================
+  GRAND TOTAL   Before: 2395   After: 2302   Removed: 93
+========================================================================
+
+Excluded files and reasons
+------------------------------------------------------------------------
+  EXCLUDED  test\capacitor\mica_and_ptfe_capacitors_00000.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: 9165bf53570b43b0...) appears in splits: ['test', 'train']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  test\diode\single_diodes_00002.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: a191003fcac1b0ac...) appears in splits: ['test', 'train']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  test\diode\single_diodes_00027.jpg
+  REASON    CROSS_CLASS duplicate – image appears under labels ['diode', 'integrated_circuit', 'potentiometer'] (SHA-256: 85f6b5d6b8c58f9f...). All copies excluded pending manual review.
+
+  EXCLUDED  test\diode\single_diodes_00058.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: 6f9e6105f6a5f916...) appears in splits: ['test', 'train']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  test\integrated_circuit\instrumentation__op_amps__buffer_amps_00001.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: ea7654b7e8c75662...) appears in splits: ['test', 'train']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  test\integrated_circuit\instrumentation__op_amps__buffer_amps_00007.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: 95d957239d175517...) appears in splits: ['test', 'train']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  test\led\led_character_and_numeric_00104.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: ada4f2754036c28c...) appears in splits: ['test', 'train']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  test\led\led_character_and_numeric_00437.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: ca44743544e649af...) appears in splits: ['test', 'train']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  test\potentiometer\rotary_potentiometers__rheostats_00284.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: a522faec814b00be...) appears in splits: ['test', 'train']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  test\potentiometer\rotary_potentiometers__rheostats_00321.jpg
+  REASON    CROSS_CLASS duplicate – image appears under labels ['diode', 'integrated_circuit', 'potentiometer'] (SHA-256: 85f6b5d6b8c58f9f...). All copies excluded pending manual review.
+
+  EXCLUDED  test\transistor\single_bipolar_transistors_00018.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: f3d107b4a0d37953...) appears in splits: ['test', 'train']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  test\transistor\single_bipolar_transistors_00349.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: 529b96dcc66ce7bc...) appears in splits: ['test', 'train']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\capacitor\mica_and_ptfe_capacitors_00003.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: 9165bf53570b43b0...) appears in splits: ['test', 'train']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\capacitor\mica_and_ptfe_capacitors_00307.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/capacitor/mica_and_ptfe_capacitors_00046.jpg [SHA-256: c66a4f2fe6e604f3...]
+
+  EXCLUDED  train\capacitor\mica_and_ptfe_capacitors_00392.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: f0bee5d41220dfa8...) appears in splits: ['train', 'val']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\diode\single_diodes_00003.jpg
+  REASON    CROSS_CLASS duplicate – image appears under labels ['diode', 'transistor'] (SHA-256: 7203b4723ef66319...). All copies excluded pending manual review.
+
+  EXCLUDED  train\diode\single_diodes_00005.jpg
+  REASON    CROSS_CLASS duplicate – image appears under labels ['diode', 'transistor'] (SHA-256: b3e292af19fc4ab7...). All copies excluded pending manual review.
+
+  EXCLUDED  train\diode\single_diodes_00007.jpg
+  REASON    CROSS_CLASS duplicate – image appears under labels ['diode', 'transistor'] (SHA-256: c948e85709f64994...). All copies excluded pending manual review.
+
+  EXCLUDED  train\diode\single_diodes_00023.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: e76bbd8d461705b1...) appears in splits: ['train', 'val']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\diode\single_diodes_00026.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/diode/single_diodes_00016.jpg [SHA-256: 04d757b20c5f35ce...]
+
+  EXCLUDED  train\diode\single_diodes_00037.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: 5f662d932a19a8ba...) appears in splits: ['train', 'val']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\diode\single_diodes_00047.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: 6f9e6105f6a5f916...) appears in splits: ['test', 'train']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\diode\single_diodes_00109.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/diode/single_diodes_00038.jpg [SHA-256: 7cbdd91650e95467...]
+
+  EXCLUDED  train\diode\single_diodes_00120.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/diode/single_diodes_00068.jpg [SHA-256: 2290bbde1177a63d...]
+
+  EXCLUDED  train\diode\single_diodes_00122.jpg
+  REASON    CROSS_CLASS duplicate – image appears under labels ['diode', 'integrated_circuit', 'potentiometer'] (SHA-256: 85f6b5d6b8c58f9f...). All copies excluded pending manual review.
+
+  EXCLUDED  train\diode\single_diodes_00159.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/diode/single_diodes_00130.jpg [SHA-256: 1b6bd161bea370e7...]
+
+  EXCLUDED  train\diode\single_diodes_00168.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: a191003fcac1b0ac...) appears in splits: ['test', 'train']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\diode\single_diodes_00181.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/diode/single_diodes_00065.jpg [SHA-256: 9cb9126988f458c0...]
+
+  EXCLUDED  train\diode\single_diodes_00217.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: 5f662d932a19a8ba...) appears in splits: ['train', 'val']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\diode\single_diodes_00234.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: b14c418b09f1f838...) appears in splits: ['train', 'val']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\diode\single_diodes_00235.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: 64cd8f8c6242749a...) appears in splits: ['train', 'val']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\diode\single_diodes_00245.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: 5f662d932a19a8ba...) appears in splits: ['train', 'val']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\diode\single_diodes_00261.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: 7b82d94bb769882a...) appears in splits: ['train', 'val']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\diode\single_diodes_00295.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/diode/single_diodes_00157.jpg [SHA-256: 993c16c0df37e814...]
+
+  EXCLUDED  train\diode\single_diodes_00324.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/diode/single_diodes_00187.jpg [SHA-256: 458ed35c07928d0d...]
+
+  EXCLUDED  train\diode\single_diodes_00445.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/diode/single_diodes_00193.jpg [SHA-256: 9e0822331ccd401e...]
+
+  EXCLUDED  train\fuse\fuses_00458.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/fuse/fuses_00445.jpg [SHA-256: 54f023f34f2d10e2...]
+
+  EXCLUDED  train\fuse\fuses_00460.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/fuse/fuses_00191.jpg [SHA-256: a3a5d6ca94fd71ca...]
+
+  EXCLUDED  train\inductor\fixed_inductors_00188.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: 07dda7edb446ec8c...) appears in splits: ['train', 'val']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\inductor\fixed_inductors_00200.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/inductor/fixed_inductors_00127.jpg [SHA-256: 03baca5ac2799c69...]
+
+  EXCLUDED  train\inductor\fixed_inductors_00451.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/inductor/fixed_inductors_00449.jpg [SHA-256: 67630159bc85156b...]
+
+  EXCLUDED  train\integrated_circuit\instrumentation__op_amps__buffer_amps_00009.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/integrated_circuit/instrumentation__op_amps__buffer_amps_00003.jpg [SHA-256: 29d7ef5dd4391682...]
+
+  EXCLUDED  train\integrated_circuit\instrumentation__op_amps__buffer_amps_00065.jpg
+  REASON    CROSS_CLASS duplicate – image appears under labels ['diode', 'integrated_circuit', 'potentiometer'] (SHA-256: 85f6b5d6b8c58f9f...). All copies excluded pending manual review.
+
+  EXCLUDED  train\integrated_circuit\instrumentation__op_amps__buffer_amps_00067.jpg
+  REASON    CROSS_CLASS duplicate – image appears under labels ['diode', 'integrated_circuit', 'potentiometer'] (SHA-256: 85f6b5d6b8c58f9f...). All copies excluded pending manual review.
+
+  EXCLUDED  train\integrated_circuit\instrumentation__op_amps__buffer_amps_00070.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: 533142c0498abf4f...) appears in splits: ['train', 'val']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\integrated_circuit\instrumentation__op_amps__buffer_amps_00092.jpg
+  REASON    CROSS_CLASS duplicate – image appears under labels ['diode', 'integrated_circuit', 'potentiometer'] (SHA-256: 85f6b5d6b8c58f9f...). All copies excluded pending manual review.
+
+  EXCLUDED  train\integrated_circuit\instrumentation__op_amps__buffer_amps_00115.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/integrated_circuit/instrumentation__op_amps__buffer_amps_00002.jpg [SHA-256: ca3ec1b7a34f4a30...]
+
+  EXCLUDED  train\integrated_circuit\instrumentation__op_amps__buffer_amps_00116.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: 95d957239d175517...) appears in splits: ['test', 'train']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\integrated_circuit\instrumentation__op_amps__buffer_amps_00124.jpg
+  REASON    CROSS_CLASS duplicate – image appears under labels ['diode', 'integrated_circuit', 'potentiometer'] (SHA-256: 85f6b5d6b8c58f9f...). All copies excluded pending manual review.
+
+  EXCLUDED  train\integrated_circuit\instrumentation__op_amps__buffer_amps_00258.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/integrated_circuit/instrumentation__op_amps__buffer_amps_00215.jpg [SHA-256: 2bed9e68d9068359...]
+
+  EXCLUDED  train\integrated_circuit\instrumentation__op_amps__buffer_amps_00435.jpg
+  REASON    CROSS_CLASS duplicate – image appears under labels ['diode', 'integrated_circuit', 'potentiometer'] (SHA-256: 85f6b5d6b8c58f9f...). All copies excluded pending manual review.
+
+  EXCLUDED  train\integrated_circuit\instrumentation__op_amps__buffer_amps_00436.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: 93de143130baccc9...) appears in splits: ['train', 'val']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\integrated_circuit\instrumentation__op_amps__buffer_amps_00437.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: 533142c0498abf4f...) appears in splits: ['train', 'val']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\integrated_circuit\instrumentation__op_amps__buffer_amps_00453.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: ea7654b7e8c75662...) appears in splits: ['test', 'train']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\integrated_circuit\instrumentation__op_amps__buffer_amps_00474.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/integrated_circuit/instrumentation__op_amps__buffer_amps_00200.jpg [SHA-256: f62ecd50de83206b...]
+
+  EXCLUDED  train\led\led_character_and_numeric_00025.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/led/led_character_and_numeric_00014.jpg [SHA-256: a1bbf65610bc3f0a...]
+
+  EXCLUDED  train\led\led_character_and_numeric_00026.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/led/led_character_and_numeric_00024.jpg [SHA-256: c9da1d6e470fd11d...]
+
+  EXCLUDED  train\led\led_character_and_numeric_00112.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: ada4f2754036c28c...) appears in splits: ['test', 'train']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\led\led_character_and_numeric_00116.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/led/led_character_and_numeric_00012.jpg [SHA-256: 168e76f7bc053825...]
+
+  EXCLUDED  train\led\led_character_and_numeric_00159.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/led/led_character_and_numeric_00023.jpg [SHA-256: ba60e760644602ad...]
+
+  EXCLUDED  train\led\led_character_and_numeric_00160.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/led/led_character_and_numeric_00023.jpg [SHA-256: ba60e760644602ad...]
+
+  EXCLUDED  train\led\led_character_and_numeric_00320.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/led/led_character_and_numeric_00024.jpg [SHA-256: c9da1d6e470fd11d...]
+
+  EXCLUDED  train\led\led_character_and_numeric_00336.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: ca44743544e649af...) appears in splits: ['test', 'train']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\led\led_character_and_numeric_00418.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/led/led_character_and_numeric_00014.jpg [SHA-256: a1bbf65610bc3f0a...]
+
+  EXCLUDED  train\led\led_character_and_numeric_00427.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: ca44743544e649af...) appears in splits: ['test', 'train']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\led\led_character_and_numeric_00440.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/led/led_character_and_numeric_00024.jpg [SHA-256: c9da1d6e470fd11d...]
+
+  EXCLUDED  train\led\led_character_and_numeric_00441.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/led/led_character_and_numeric_00145.jpg [SHA-256: 6d9240657568829d...]
+
+  EXCLUDED  train\potentiometer\rotary_potentiometers__rheostats_00201.jpg
+  REASON    CROSS_CLASS duplicate – image appears under labels ['diode', 'integrated_circuit', 'potentiometer'] (SHA-256: 85f6b5d6b8c58f9f...). All copies excluded pending manual review.
+
+  EXCLUDED  train\potentiometer\rotary_potentiometers__rheostats_00221.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: 8ce509a8dbef6e1e...) appears in splits: ['train', 'val']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\potentiometer\rotary_potentiometers__rheostats_00267.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: a745f42de749d7a0...) appears in splits: ['train', 'val']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\potentiometer\rotary_potentiometers__rheostats_00285.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: a522faec814b00be...) appears in splits: ['test', 'train']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\potentiometer\rotary_potentiometers__rheostats_00300.jpg
+  REASON    CROSS_CLASS duplicate – image appears under labels ['diode', 'integrated_circuit', 'potentiometer'] (SHA-256: 85f6b5d6b8c58f9f...). All copies excluded pending manual review.
+
+  EXCLUDED  train\potentiometer\rotary_potentiometers__rheostats_00480.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/potentiometer/rotary_potentiometers__rheostats_00009.jpg [SHA-256: e38cbfd03cec47f4...]
+
+  EXCLUDED  train\push_button\pushbutton_switches_00431.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/push_button/pushbutton_switches_00429.jpg [SHA-256: 15e475335ef4002f...]
+
+  EXCLUDED  train\transistor\single_bipolar_transistors_00000.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: 529b96dcc66ce7bc...) appears in splits: ['test', 'train']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\transistor\single_bipolar_transistors_00002.jpg
+  REASON    CROSS_CLASS duplicate – image appears under labels ['diode', 'transistor'] (SHA-256: c948e85709f64994...). All copies excluded pending manual review.
+
+  EXCLUDED  train\transistor\single_bipolar_transistors_00003.jpg
+  REASON    CROSS_CLASS duplicate – image appears under labels ['diode', 'transistor'] (SHA-256: b3e292af19fc4ab7...). All copies excluded pending manual review.
+
+  EXCLUDED  train\transistor\single_bipolar_transistors_00024.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: f3d107b4a0d37953...) appears in splits: ['test', 'train']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\transistor\single_bipolar_transistors_00042.jpg
+  REASON    CROSS_CLASS duplicate – image appears under labels ['diode', 'transistor'] (SHA-256: b3e292af19fc4ab7...). All copies excluded pending manual review.
+
+  EXCLUDED  train\transistor\single_bipolar_transistors_00271.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: f3d107b4a0d37953...) appears in splits: ['test', 'train']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  train\transistor\single_bipolar_transistors_00489.jpg
+  REASON    SAME_CLASS duplicate – retained copy is train/transistor/single_bipolar_transistors_00020.jpg [SHA-256: 8b7e37fcee32f8e6...]
+
+  EXCLUDED  val\capacitor\mica_and_ptfe_capacitors_00400.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: f0bee5d41220dfa8...) appears in splits: ['train', 'val']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  val\diode\single_diodes_00001.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: e76bbd8d461705b1...) appears in splits: ['train', 'val']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  val\diode\single_diodes_00008.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: 7b82d94bb769882a...) appears in splits: ['train', 'val']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  val\diode\single_diodes_00053.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: b14c418b09f1f838...) appears in splits: ['train', 'val']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  val\diode\single_diodes_00074.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: 64cd8f8c6242749a...) appears in splits: ['train', 'val']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  val\diode\single_diodes_00220.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: 5f662d932a19a8ba...) appears in splits: ['train', 'val']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  val\inductor\fixed_inductors_00193.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: 07dda7edb446ec8c...) appears in splits: ['train', 'val']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  val\integrated_circuit\instrumentation__op_amps__buffer_amps_00076.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: 533142c0498abf4f...) appears in splits: ['train', 'val']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  val\integrated_circuit\instrumentation__op_amps__buffer_amps_00319.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: 93de143130baccc9...) appears in splits: ['train', 'val']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  val\potentiometer\rotary_potentiometers__rheostats_00281.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: a745f42de749d7a0...) appears in splits: ['train', 'val']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  val\potentiometer\rotary_potentiometers__rheostats_00282.jpg
+  REASON    CROSS_SPLIT duplicate – same image (SHA-256: 8ce509a8dbef6e1e...) appears in splits: ['train', 'val']. All copies excluded to prevent data leakage.
+
+  EXCLUDED  val\transistor\single_bipolar_transistors_00027.jpg
+  REASON    CROSS_CLASS duplicate – image appears under labels ['diode', 'transistor'] (SHA-256: 7203b4723ef66319...). All copies excluded pending manual review.
+
+========================================================================
+  No original files were modified, moved, or deleted.
+========================================================================

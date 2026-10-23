@@ -1,0 +1,13 @@
+class_index,class_name,support,predictions,precision_pct,recall_pct,f1_score
+0,capacitor,48,84,45.24,79.17,0.5758
+1,diode,21,33,45.45,71.43,0.5556
+2,fuse,25,17,41.18,28.00,0.3333
+3,inductor,34,21,66.67,41.18,0.5091
+4,integrated_circuit,12,10,80.00,66.67,0.7273
+5,led,49,57,61.40,71.43,0.6604
+6,potentiometer,43,31,61.29,44.19,0.5135
+7,push_button,69,42,73.81,44.93,0.5586
+8,resistor,45,51,58.82,66.67,0.6250
+
+SUMMARY,Macro Average,346,346,59.32,57.07,0.5621
+SUMMARY,Overall Accuracy,346,346,,,56.94%

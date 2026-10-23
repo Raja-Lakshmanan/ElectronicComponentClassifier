@@ -1,0 +1,15 @@
+# Integer Biases for FC Output (FC2) (classifier.2.bias)
+# Shape: [10], dtype: int32
+# Bias scale: 1.091432568582e-03 (act_scale=0.2136011600, w_scale=0.0051096753)
+# Max value: 76, Min value: -190
+# index: int32_value (dequantized_fp32, original_fp32)
+   0:     -123  (deq=-0.134246, orig=-0.134287)
+   1:      -83  (deq=-0.090589, orig=-0.090638)
+   2:       76  (deq=+0.082949, orig=+0.083295)
+   3:       28  (deq=+0.030560, orig=+0.030198)
+   4:      -49  (deq=-0.053480, orig=-0.053684)
+   5:       24  (deq=+0.026194, orig=+0.025815)
+   6:      -67  (deq=-0.073126, orig=-0.073336)
+   7:     -190  (deq=-0.207372, orig=-0.207209)
+   8:      -41  (deq=-0.044749, orig=-0.044724)
+   9:      -32  (deq=-0.034926, orig=-0.035417)

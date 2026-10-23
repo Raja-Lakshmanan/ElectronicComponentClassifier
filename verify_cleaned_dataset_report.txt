@@ -1,0 +1,61 @@
+========================================================================
+  Electronic Component Classifier – Cleaned Dataset Verification Report
+  cleaned_dataset : C:\Users\rajal\OneDrive\Desktop\ElectronicComponentClassifier\cleaned_dataset
+  cross_class CSV : C:\Users\rajal\OneDrive\Desktop\ElectronicComponentClassifier\cross_class_duplicates.csv
+========================================================================
+
+========================================================================
+CHECK 1 & 2 – Per-class image counts and class presence
+========================================================================
+  Class                      train     val    test   TOTAL
+  --------------------------------------------------------
+  capacitor                    223      47      48     318
+  diode                         85      17      21     123
+  fuse                         110      24      25     159
+  inductor                     149      31      34     214
+  integrated_circuit            46      10      12      68
+  led                          221      49      49     319
+  potentiometer                201      42      43     286
+  push_button                  317      68      69     454
+  resistor                     210      45      45     300
+  transistor                    42       9      10      61
+  --------------------------------------------------------
+  TOTAL                       1604     342     356    2302
+
+PASS  All 10 expected classes present in every split.
+
+PASS  No unexpected class directories found.
+
+========================================================================
+CHECK 3 & 4 – SHA-256 duplicate detection (cross-split & cross-class)
+========================================================================
+  Total files hashed    : 2302
+  Unique SHA-256 hashes : 2302
+
+PASS  No cross-split duplicate hashes found.
+
+PASS  No cross-class duplicate hashes found.
+
+========================================================================
+CHECK 5 – Cross-class duplicate exclusion verification
+========================================================================
+  Cross-class groups in CSV : 4
+
+PASS  Group 1 (labels: ['diode', 'transistor']) – correctly excluded. Hash: 7203b4723ef66319103d...
+PASS  Group 2 (labels: ['diode', 'integrated_circuit', 'potentiometer']) – correctly excluded. Hash: 85f6b5d6b8c58f9f53d4...
+PASS  Group 3 (labels: ['diode', 'transistor']) – correctly excluded. Hash: b3e292af19fc4ab7237a...
+PASS  Group 4 (labels: ['diode', 'transistor']) – correctly excluded. Hash: c948e85709f649946bfa...
+
+PASS  All 4 cross-class duplicate groups are absent from cleaned_dataset/.
+
+========================================================================
+CHECK 6 – Image file integrity (Pillow open + load)
+========================================================================
+  Total images checked  : 2302
+  Unreadable / corrupted: 0
+
+PASS  All retained images opened and loaded successfully.
+
+========================================================================
+  End of report – no files were modified.
+========================================================================

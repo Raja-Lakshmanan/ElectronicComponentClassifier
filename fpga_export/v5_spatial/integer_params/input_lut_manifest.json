@@ -1,0 +1,40 @@
+{
+  "description": "256-entry unsigned-8-bit camera pixel to signed INT8 input activation lookup table for V5-Spatial",
+  "target_hardware": "PYNQ-Z2 (Xilinx Zynq-7020 SoC FPGA)",
+  "hardware_implementation": "Single-cycle 256x8-bit Block ROM (or distributed LUT RAM)",
+  "input_activation_scale": 0.00787402,
+  "input_domain": {
+    "type": "uint8",
+    "range": [
+      0,
+      255
+    ],
+    "description": "Raw unsigned 8-bit camera RGB pixel values"
+  },
+  "output_domain": {
+    "type": "int8",
+    "range": [
+      -127,
+      127
+    ],
+    "distinct_values": 255,
+    "description": "Quantized signed INT8 activations for Conv1 input"
+  },
+  "formula": {
+    "normalization": "x = (P / 255.0 - 0.5) / 0.5 = 2.0 * P / 255.0 - 1.0",
+    "quantization": "q = clip(round(x / input_activation_scale), -128, 127)",
+    "rounding_rule": "round-to-nearest-even (IEEE 754 / np.round)"
+  },
+  "comparison_vs_naive_p_minus_128": {
+    "entries_differing": 128,
+    "differing_percentage": 50.0,
+    "max_discrepancy_lsb": 1,
+    "mean_discrepancy_lsb": 0.5,
+    "significance": "50.0% of pixel values differ by +/- 1 LSB between exact PyTorch normalization and naive (P - 128). Implementing this LUT in FPGA fabric avoids this 1-LSB systematic distortion with zero DSP overhead."
+  },
+  "exported_files": {
+    "npy_file": "input_lut_int8.npy",
+    "txt_file": "input_lut_int8.txt"
+  },
+  "verification_status": "All 256 entries verified bit-exact against evaluate_v5_quantization.py"
+}

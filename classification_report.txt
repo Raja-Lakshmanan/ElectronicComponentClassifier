@@ -1,0 +1,63 @@
+========================================================================
+  Electronic Component Classifier – Test Set Report
+========================================================================
+  Checkpoint       : C:\Users\rajal\OneDrive\Desktop\ElectronicComponentClassifier\checkpoints\best_model.pth
+  Checkpoint epoch : 18
+  Val accuracy     : 54.39%
+  Test accuracy    : 51.12%
+  Test images      : 356
+  Device           : cuda
+========================================================================
+
+Per-class Classification Report
+------------------------------------------------------------------------
+                    precision    recall  f1-score   support
+
+         capacitor     0.5000    0.6667    0.5714        48
+             diode     0.6250    0.2381    0.3448        21
+              fuse     0.4167    0.2000    0.2703        25
+          inductor     0.4500    0.2647    0.3333        34
+integrated_circuit     0.5000    0.0833    0.1429        12
+               led     0.5469    0.7143    0.6195        49
+     potentiometer     0.4231    0.5116    0.4632        43
+       push_button     0.4432    0.5652    0.4968        69
+          resistor     0.7391    0.7556    0.7473        45
+        transistor     0.0000    0.0000    0.0000        10
+
+          accuracy                         0.5112       356
+         macro avg     0.4644    0.3999    0.3989       356
+      weighted avg     0.4991    0.5112    0.4850       356
+
+
+Most Frequently Confused Pairs
+------------------------------------------------------------------------
+  True Class               Predicted As              Count
+  --------------------------------------------------------
+  push_button              potentiometer                15
+  fuse                     led                          14
+  potentiometer            push_button                  14
+  inductor                 capacitor                     9
+  integrated_circuit       push_button                   9
+  diode                    push_button                   7
+  inductor                 push_button                   6
+  push_button              capacitor                     6
+  capacitor                resistor                      5
+  diode                    capacitor                     5
+
+Confusion Matrix (rows=true, cols=predicted)
+------------------------------------------------------------------------
+                       capac diode  fuse induc integ   led poten push_ resis trans
+             capacitor    32     0     1     1     0     2     4     3     5     0
+                 diode     5     5     0     3     0     1     0     7     0     0
+                  fuse     2     0     5     0     0    14     1     2     1     0
+              inductor     9     2     3     9     1     2     2     6     0     0
+    integrated_circuit     0     1     0     1     1     0     0     9     0     0
+                   led     1     0     0     3     0    35     5     4     1     0
+         potentiometer     1     0     0     0     0     5    22    14     1     0
+           push_button     6     0     1     2     0     3    15    39     3     0
+              resistor     3     0     1     0     0     2     3     2    34     0
+            transistor     5     0     1     1     0     0     0     2     1     0
+
+========================================================================
+  No files were modified. No training was performed.
+========================================================================

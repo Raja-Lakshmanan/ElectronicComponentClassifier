@@ -1,0 +1,207 @@
+{
+  "experiment": "Phase 2, Step 2.3 -- V5-Spatial Quantization Evaluation",
+  "checkpoint": "v5_spatial_best_model.pth",
+  "test_samples": 346,
+  "calibration_samples": 200,
+  "calibration_source": "cleaned_dataset/train (NOT test data)",
+  "seed": 42,
+  "fp32_baseline": {
+    "accuracy": 68.78612716763006,
+    "macro_f1": 0.6646342495527071,
+    "total_samples": 346,
+    "correct": 238,
+    "inference_time_s": 4.295
+  },
+  "int8_weight_only": {
+    "description": "Simulated weight-only INT8 quantization. All weights are symmetrically quantized to signed INT8 (scale = max|w|/127), then dequantized back to FP32 for inference. Activations remain in FP32. This is NOT full integer inference -- it measures accuracy impact of weight quantization alone.",
+    "accuracy": 69.36416184971098,
+    "macro_f1": 0.669920713739327,
+    "accuracy_delta": 0.578,
+    "f1_delta": 0.005286,
+    "fp32_prediction_agreement": 343,
+    "fp32_prediction_agreement_pct": 99.13,
+    "max_logit_error": 0.196405,
+    "mean_logit_error": 0.043181,
+    "per_tensor_info": {
+      "features.0.weight": {
+        "shape": [
+          16,
+          3,
+          3,
+          3
+        ],
+        "scale": 0.003316483460366726,
+        "max_abs_error": 0.001655280590057373,
+        "mean_abs_error": 0.0008134666713885963,
+        "original_range": [
+          -0.421193391084671,
+          0.3115990459918976
+        ]
+      },
+      "features.0.bias": {
+        "shape": [
+          16
+        ],
+        "scale": 0.003935651853680611,
+        "max_abs_error": 0.0019028857350349426,
+        "mean_abs_error": 0.0008350242278538644,
+        "original_range": [
+          -0.15575464069843292,
+          0.4998278021812439
+        ]
+      },
+      "features.3.weight": {
+        "shape": [
+          32,
+          16,
+          3,
+          3
+        ],
+        "scale": 0.0054134344682097435,
+        "max_abs_error": 0.002706386148929596,
+        "mean_abs_error": 0.00135239667724818,
+        "original_range": [
+          -0.45931294560432434,
+          0.6875061988830566
+        ]
+      },
+      "features.3.bias": {
+        "shape": [
+          32
+        ],
+        "scale": 0.0015128921950235963,
+        "max_abs_error": 0.0007406696677207947,
+        "mean_abs_error": 0.0004021319327875972,
+        "original_range": [
+          -0.1143103539943695,
+          0.19213731586933136
+        ]
+      },
+      "features.6.weight": {
+        "shape": [
+          64,
+          32,
+          3,
+          3
+        ],
+        "scale": 0.00465678796172142,
+        "max_abs_error": 0.002328205853700638,
+        "mean_abs_error": 0.00115391134750098,
+        "original_range": [
+          -0.5914120674133301,
+          0.4705919921398163
+        ]
+      },
+      "features.6.bias": {
+        "shape": [
+          64
+        ],
+        "scale": 0.0018012942746281624,
+        "max_abs_error": 0.0008678305894136429,
+        "mean_abs_error": 0.0004408717795740813,
+        "original_range": [
+          -0.14890757203102112,
+          0.2287643700838089
+        ]
+      },
+      "classifier.0.weight": {
+        "shape": [
+          64,
+          256
+        ],
+        "scale": 0.0037154247984290123,
+        "max_abs_error": 0.0018577054142951965,
+        "mean_abs_error": 0.0009290396701544523,
+        "original_range": [
+          -0.471858948469162,
+          0.42107659578323364
+        ]
+      },
+      "classifier.0.bias": {
+        "shape": [
+          64
+        ],
+        "scale": 0.0011725416406989098,
+        "max_abs_error": 0.000580858439207077,
+        "mean_abs_error": 0.0003080220485571772,
+        "original_range": [
+          -0.1027713343501091,
+          0.14891278743743896
+        ]
+      },
+      "classifier.2.weight": {
+        "shape": [
+          10,
+          64
+        ],
+        "scale": 0.005109675228595734,
+        "max_abs_error": 0.0025522857904434204,
+        "mean_abs_error": 0.0012980117462575436,
+        "original_range": [
+          -0.6489287614822388,
+          0.3806823790073395
+        ]
+      },
+      "classifier.2.bias": {
+        "shape": [
+          10
+        ],
+        "scale": 0.0016315669054165483,
+        "max_abs_error": 0.0008019674569368362,
+        "mean_abs_error": 0.00037969648838043213,
+        "original_range": [
+          -0.20720899105072021,
+          0.08329487591981888
+        ]
+      }
+    },
+    "inference_time_s": 3.921
+  },
+  "fixed_point_integer": {
+    "description": "Fixed-point integer inference simulation with INT8 weights, INT8 activations, FP32 biases added after INT32 accumulation, and INT32 accumulators. Activation scales are calibrated from a training-set subset (NOT test data). This simulates the integer-only datapath behavior of an FPGA implementation, including rounding and saturation. The final FC layer outputs FP32 logits (no re-quantization needed for argmax classification). Biases remain in FP32 to avoid introducing additional quantization error in the bias term; on FPGA hardware these would typically be stored as scaled INT16 or INT32 values.",
+    "accuracy": 68.78612716763006,
+    "macro_f1": 0.6607262524713083,
+    "accuracy_delta": 0.0,
+    "f1_delta": -0.003908,
+    "fp32_prediction_agreement": 332,
+    "fp32_prediction_agreement_pct": 95.95,
+    "max_logit_error": 1.3173,
+    "mean_logit_error": 0.1408,
+    "int32_overflows": 0,
+    "int8_saturations": 87,
+    "activation_scales": {
+      "input": 0.00787402,
+      "after_conv1_relu": 0.0271169,
+      "after_pool1": 0.0271169,
+      "after_conv2_relu": 0.14521016,
+      "after_pool2": 0.14521016,
+      "after_conv3_relu": 0.50742737,
+      "after_pool3": 0.50742737,
+      "after_spatial_pool": 0.32026483,
+      "after_fc1_relu": 0.21360116
+    },
+    "weight_scales": {
+      "conv0": 0.00331648,
+      "conv1": 0.00541343,
+      "conv2": 0.00465679,
+      "fc0": 0.00371542,
+      "fc1": 0.00510968
+    },
+    "quantization_config": {
+      "input_activations": "INT8 (symmetric per-tensor)",
+      "weights": "INT8 (symmetric per-tensor)",
+      "biases": "FP32 (added after INT32 accumulation; would be INT16/INT32 on FPGA)",
+      "accumulators": "INT32",
+      "output_activations": "INT8 (re-quantized after ReLU)",
+      "final_layer_output": "FP32 logits (no re-quantization for argmax)",
+      "pooling": "Integer max-pool (on INT8 values); integer average-pool with re-quantization"
+    },
+    "inference_time_s": 33.9,
+    "limitations": [
+      "Biases are stored in FP32, not fully quantized to INT16. On FPGA, biases would be pre-scaled to match the combined weight*activation scale.",
+      "AdaptiveAvgPool2d uses floating-point division for the mean, then re-quantizes. On FPGA, this would use integer division or shift-based approximation.",
+      "Per-tensor (not per-channel) weight quantization is used. Per-channel may yield better accuracy but increases hardware complexity.",
+      "Activation scales are calibrated via max-value method. Percentile-based or KL-divergence calibration could reduce outlier sensitivity."
+    ]
+  }
+}
