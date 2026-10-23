@@ -1,0 +1,80 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# Local configuration / credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets.*
+*token*
+
+# Editors and operating systems
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Build artifacts
+*.obj
+*.o
+*.exe
+*.dll
+*.pdb
+*.ilk
+*.lib
+*.exp
+*.log
+build/
+dist/
+out/
+cmake-build-*/
+
+# Vitis HLS / Vivado generated output
+hls_project/proj_*/
+hls_project/solution*/
+hls_project/.Xil/
+vivado_project/
+Xil/
+*.jou
+*.str
+*.wdb
+*.vcd
+*.rpt
+*.dcp
+*.bit
+*.ltx
+*.hwh
+*.xsa
+*.runs/
+*.cache/
+
+# Local datasets and training checkpoints (keep only if deliberately curated)
+raw_dataset/
+dataset/
+prepared_dataset/
+cleaned_dataset/
+checkpoints/
+
+# Temporary and generated predictions
+predictions/
+tmp/
+temp/
